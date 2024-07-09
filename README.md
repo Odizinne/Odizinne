@@ -1,9 +1,7 @@
 ## About me
 
-- 🌱 I’m currently learning Python
-- 📫 How to reach me: Discord/Odizinne
-
 I'm a beginner dev, learnig everything by myself by creating tiny projects.<br/>
-I'm looking to improve my English.
+I'm looking to improve my English.<br/>
+My favorite programming language is python.
 
-*Fedora > Arch btw*
+If you like my projects and want to support me: https://ko-fi.com/odizinne
