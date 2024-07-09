@@ -1,6 +1,6 @@
 ## About me
 
-I'm a beginner dev, learnig everything by myself by creating tiny projects.<br/>
+I'm a beginner dev, learning everything by myself by creating tiny projects.<br/>
 Python is my favorite programming language.
 
 If you appreciate my work and would like to support me:
