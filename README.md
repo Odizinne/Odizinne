@@ -1,7 +1,11 @@
 ## About me
 
 I'm a beginner dev, learnig everything by myself by creating tiny projects.<br/>
-I'm looking to improve my English.<br/>
-My favorite programming language is python.
+Python is my favorite programming language.
 
-If you like my projects and want to support me: https://ko-fi.com/odizinne
+If you appreciate my work and would like to support me:
+
+<a href="https://ko-fi.com/odizinne">
+  <img src="kofi_button_red.png" alt="Ko-fi" width="200" height="auto">
+</a>
+
