@@ -9,3 +9,5 @@ If you appreciate my work and would like to support me:
   <img src="kofi_button_red.png" alt="Ko-fi" width="200" height="auto">
 </a>
 
+
+Moved to [odizinne.net](https://odizinne.net)
