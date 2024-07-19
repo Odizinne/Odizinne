@@ -2,7 +2,8 @@
 
 [![](https://visitcount.itsvg.in/api?id=Odizinne&icon=0&color=0)](https://visitcount.itsvg.in)
 
-I'm learning everything by myself by creating tiny projects.<br/>
+I'm learning everything by myself by creating tiny projects.
+
 Python is my favorite programming language.
 
 If you appreciate my work and would like to support me:
