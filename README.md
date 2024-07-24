@@ -13,35 +13,35 @@ If you appreciate my work and would like to support me:
 
 ## Github stats
 <a href="https://github.com/odizinne">
-  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=odizinne&theme=dracula" />
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api?username=odizinne&rank_icon=github&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <a href="https://github.com/odizinne">
-  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=odizinne&layout=donut&langs_count=8&card_width=320&theme=dracula" />
+  <img height=200 align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=odizinne&layout=donut&langs_count=8&card_width=320&hide_border=true&theme=github_dark_dimmed" />
 </a>
 
 ## Repositories
 
 <a href="https://github.com/odizinne/makesense">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=makesense&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=makesense&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <a href="https://github.com/Odizinne/bigpicturetv">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=bigpicturetv&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=bigpicturetv&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <br><br>
 
 <a href="https://github.com/odizinne/steamshine">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=steamshine&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=steamshine&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <a href="https://github.com/Odizinne/headsetcontrol-qt">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=headsetcontrol-qt&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=headsetcontrol-qt&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <br><br>
 
 <a href="https://github.com/Odizinne/OpenRGB-GMK67-Builds">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=OpenRGB-GMK67-Builds&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=OpenRGB-GMK67-Builds&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <a href="https://github.com/odizinne/pokerogue-standalone">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=pokerogue-standalone&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=pokerogue-standalone&hide_border=true&theme=github_dark_dimmed" />
 </a>
 
 ##
