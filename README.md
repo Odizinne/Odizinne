@@ -43,6 +43,11 @@ If you appreciate my work and would like to support me:
 <a href="https://github.com/odizinne/pokerogue-standalone">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=pokerogue-standalone&hide_border=true&theme=github_dark_dimmed" />
 </a>
+<br><br>
+
+<a href="https://github.com/Odizinne/OpenRGB-Installer">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=OpenRGB-Installer&hide_border=true&theme=github_dark_dimmed" />
+</a>
 
 ##
 [![](https://visitcount.itsvg.in/api?id=Odizinne&icon=0&color=5)](https://visitcount.itsvg.in)
