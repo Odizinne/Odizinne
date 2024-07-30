@@ -25,7 +25,7 @@ If you appreciate my work and would like to support me:
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=makesense&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <a href="https://github.com/Odizinne/bigpicturetv">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=bigpicturetv&hide_border=true&theme=github_dark_dimmed" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=qms-quickmonitorswitcher&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <br><br>
 
@@ -47,6 +47,9 @@ If you appreciate my work and would like to support me:
 
 <a href="https://github.com/Odizinne/OpenRGB-Installer">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=OpenRGB-Installer&hide_border=true&theme=github_dark_dimmed" />
+</a>
+<a href="https://github.com/Odizinne/bigpicturetv">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=bigpicturetv&hide_border=true&theme=github_dark_dimmed" />
 </a>
 
 ##
