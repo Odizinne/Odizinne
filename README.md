@@ -24,7 +24,7 @@ If you appreciate my work and would like to support me:
 <a href="https://github.com/odizinne/makesense">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=makesense&hide_border=true&theme=github_dark_dimmed" />
 </a>
-<a href="https://github.com/Odizinne/bigpicturetv">
+<a href="https://github.com/Odizinne/qms-quickmonitorswitche">
   <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=odizinne&repo=qms-quickmonitorswitcher&hide_border=true&theme=github_dark_dimmed" />
 </a>
 <br><br>
