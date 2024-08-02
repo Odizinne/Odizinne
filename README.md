@@ -13,7 +13,7 @@ If you appreciate my work and would like to support me:
 <br><br>
 
 <a href="https://github.com/odizinne">
-  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=odizinne&layout=compact&langs_count=8&card_width=320&hide_border=true&theme=dracula" />
+  <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs?username=odizinne&layout=compact&langs_count=8&card_width=320&hide_border=false&theme=github_dark" />
 </a>
 
 ##
