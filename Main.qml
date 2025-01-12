@@ -11,7 +11,7 @@ ApplicationWindow {
     title: qsTr("Flora's Portfolio")
     property int selectedTab: 0
     property int spacing: 40
-    property int targetColumns: width >= 1920 ? 4 : Math.floor(width / (1920/4))
+    property int targetColumns: Math.floor(width / (1920/4))
 
     ListModel {
         id: projectsModel
