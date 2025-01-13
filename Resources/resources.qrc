@@ -8,6 +8,8 @@
         <file>images/headsetcontrolqt.png</file>
         <file>images/bigpicturetv.png</file>
         <file>images/boxy.png</file>
+        <file>icons/moon.png</file>
+        <file>icons/sun.png</file>
         <file>font/SpaceMono-Regular.ttf</file>
     </qresource>
 </RCC>

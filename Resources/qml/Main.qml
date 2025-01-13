@@ -14,14 +14,43 @@ ApplicationWindow {
     property int targetColumns: Math.floor(width / (1920/5))
     property int animationDuration: 400
     Material.theme: Material.Light
-    Material.accent: Material.LightGreen
+    Material.accent: Material.Red
 
 
-    property string frameColor: Material.theme === Material.Dark ? "#070707" : "#f8f8f8"
-    property string topbarColor: Material.theme === Material.Dark ? "#181818" : "#e8e8e8"
-    property string imageBGColor: Material.color(Material.LightGreen, Material.Shade50)
+    property string frameColor: Material.theme === Material.Dark ? "#262626" : "#f8f8f8"
+    property string topbarColor: Material.theme === Material.Dark ? "#313131" : "#e8e8e8"
     property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
     property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
+
+    property string bgGreen: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.LightGreen, Material.Shade200).r,
+                Material.color(Material.LightGreen, Material.Shade200).g,
+                Material.color(Material.LightGreen, Material.Shade200).b,
+                0.3) : Material.color(Material.LightGreen, Material.Shade50)
+
+    property string bgOrange: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.Orange, Material.Shade200).r,
+                Material.color(Material.Orange, Material.Shade200).g,
+                Material.color(Material.Orange, Material.Shade200).b,
+                0.3) : Material.color(Material.Orange, Material.Shade50)
+
+    property string bgPurple: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.Purple, Material.Shade200).r,
+                Material.color(Material.Purple, Material.Shade200).g,
+                Material.color(Material.Purple, Material.Shade200).b,
+                0.3) : Material.color(Material.Purple, Material.Shade50)
+
+    property string bgRed: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.Red, Material.Shade200).r,
+                Material.color(Material.Red, Material.Shade200).g,
+                Material.color(Material.Red, Material.Shade200).b,
+                0.3) : Material.color(Material.Red, Material.Shade50)
+
+    property string bgGrey: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.Grey, Material.Shade200).r,
+                Material.color(Material.Grey, Material.Shade200).g,
+                Material.color(Material.Grey, Material.Shade200).b,
+                0.3) : Material.color(Material.Grey, Material.Shade50)
 
     color: root.bgColor
 
@@ -77,11 +106,9 @@ ApplicationWindow {
         anchors.bottomMargin: 30
         anchors.leftMargin: 0
         anchors.rightMargin: 0
-
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        //radius: 12
         height: 60
         color: root.topbarColor
 
@@ -90,6 +117,10 @@ ApplicationWindow {
             id: topbarLayout
             spacing: 15
             anchors.fill: parent
+
+            Item {
+                Layout.preferredWidth: themeSwitch.width
+            }
 
             Item {
                 Layout.fillWidth: true
@@ -133,11 +164,32 @@ ApplicationWindow {
                 Layout.fillWidth: true
             }
 
+            Image {
+                id: themeImage
+                source: Material.theme === Material.Dark ? "qrc:/icons/moon.png" : "qrc:/icons/sun.png"
+                Layout.preferredHeight: themeSwitch.height - 10
+                Layout.rightMargin: -15
+                Layout.preferredWidth: height
+            }
+
+            Switch {
+                id: themeSwitch
+                checked: root.Material.theme === root.Material.Dark
+                onCheckedChanged: {
+                    if (checked) {
+                        root.Material.theme = root.Material.Dark
+                        themeSwitch.checked = true
+                    } else {
+                        root.Material.theme = root.Material.Light
+                        themeSwitch.checked = false
+                    }
+                }
+            }
         }
     }
 
     ScrollView {
-        anchors.topMargin: 30
+        anchors.topMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
@@ -191,7 +243,7 @@ ApplicationWindow {
     }
 
     ScrollView {
-        anchors.topMargin: 30
+        //anchors.topMargin: 30
         anchors.bottomMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
@@ -226,6 +278,7 @@ ApplicationWindow {
                 anchors.left: parent.left
                 anchors.right: parent.right
                 anchors.top: parent.top
+                anchors.topMargin: 30
                 height: 50
                 horizontalAlignment: Text.AlignHCenter
             }
@@ -269,7 +322,7 @@ ApplicationWindow {
                             }
                             height: width
 
-                            color: root.imageBGColor
+                            color: root.bgRed
                             topLeftRadius: 6
                             topRightRadius: 6
                             Image {
@@ -322,7 +375,7 @@ ApplicationWindow {
         }
     }
     ScrollView {
-        anchors.topMargin: 30
+        anchors.topMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
@@ -361,6 +414,7 @@ ApplicationWindow {
                     text: "Skills & Technologies"
                     font.pixelSize: 30
                     font.bold: true
+                    Layout.topMargin: 30
                     horizontalAlignment: Text.AlignHCenter
                 }
 
@@ -368,6 +422,7 @@ ApplicationWindow {
                     {
                         category: "Desktop Development",
                         color: "#73d216",
+                        bgColor: root.bgGreen,
                         skills: [
                             {name: "Qt/QML", level: 0.9},
                             {name: "Qt Widgets", level: 0.7},
@@ -377,6 +432,7 @@ ApplicationWindow {
                     {
                         category: "Operating Systems",
                         color: "#fcaf3e",
+                        bgColor: bgOrange,
                         skills: [
                             {name: "Windows", level: 0.95},
                             {name: "Debian", level: 0.8},
@@ -388,6 +444,7 @@ ApplicationWindow {
                     {
                         category: "Python Development",
                         color: "#ad7fa8",
+                        bgColor: bgPurple,
                         skills: [
                             {name: "Python", level: 0.7},
                             {name: "PyQt/PySide", level: 0.65}
@@ -396,6 +453,7 @@ ApplicationWindow {
                     {
                         category: "Development Tools",
                         color: "#ef2929",
+                        bgColor: bgRed,
                         skills: [
                             {name: "Git", level: 0.85},
                             {name: "Qt Creator", level: 0.8},
@@ -406,6 +464,7 @@ ApplicationWindow {
                     {
                         category: "Other Technologies",
                         color: "#babdb6",
+                        bgColor: bgGrey,
                         skills: [
                             {name: "Electron", level: 0.5}
                         ]
@@ -422,7 +481,7 @@ ApplicationWindow {
                         Layout.leftMargin: 40
                         Layout.rightMargin: 40
                         Layout.preferredHeight: skillsColumn.implicitHeight + 40
-                        color: root.frameColor
+                        color: modelData.bgColor
                         radius: 6
                         border.width: 1
                         border.color: root.borderColor
@@ -497,7 +556,7 @@ ApplicationWindow {
     }
 
     ScrollView {
-        anchors.topMargin: 30
+        anchors.topMargin: 0
         anchors.bottomMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
@@ -532,6 +591,7 @@ ApplicationWindow {
                 Label {
                     Layout.fillWidth: true
                     text: "Hello, I'm Flora"
+                    Layout.bottomMargin: 10
                     font.pixelSize: 30
                     font.bold: true
                     horizontalAlignment: Text.AlignHCenter
@@ -540,7 +600,7 @@ ApplicationWindow {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: introText.implicitHeight + 40
-                    color: root.imageBGColor
+                    color: root.bgRed
                     radius: 6
                     border.width: 1
                     border.color: root.borderColor
