@@ -141,7 +141,7 @@ ApplicationWindow {
             Button {
                 flat: true
                 highlighted: root.selectedTab === 0
-                text: "Projects"
+                text: "Welcome"
                 onClicked: {
                     root.selectedTab = 0
                 }
