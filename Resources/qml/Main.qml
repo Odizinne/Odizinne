@@ -16,7 +16,7 @@ ApplicationWindow {
     Material.theme: Material.Light
     Material.accent: Material.Red
 
-    property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ffffff"
+    property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ececec"
     property string topbarColor: Material.theme === Material.Dark ? "#313131" : "#e8e8e8"
     property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
     property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
@@ -64,51 +64,37 @@ ApplicationWindow {
         ListElement {
             title: "Retr0Mine"
             url: "https://github.com/Odizinne/Retr0Mine"
-            lightImage: "qrc:/images/retr0mine_light.png"
-            darkImage: "qrc:/images/retr0mine.png"
-            description: "Retr0Mine is an attempt to create a modern looking minesweeper. It was designed with many QoL features to enhance gameplay."
+            description: "Retr0Mine is an attempt to create a modern looking minesweeper for a friend. It was designed with many QoL features to enhance gameplay. Runs on windows and linux."
         }
         ListElement {
             title: "QuickSoundSwitcher"
             url: "https://github.com/Odizinne/QuickSoundSwitcher"
-            lightImage: "qrc:/images/quicksoundswitcher_light.png"
-            darkImage: "qrc:/images/quicksoundswitcher.png"
-            description: "A custom all in one audio panel for windows, aiming to look as native as possible."
+            description: "A custom all in one audio panel for windows featuring input and output device switch as well as a volume mixer. Made with close to native Ui for Windows 10 and 11."
         }
         ListElement {
             title: "HeadsetControl-Qt"
             url: "https://github.com/Odizinne/HeadsetControl-Qt"
-            lightImage: "qrc:/images/headsetcontrolqt_light.png"
-            darkImage: "qrc:/images/headsetcontrolqt.png"
-            description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd. It is running on both windows and linux"
+            description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd using Qt-Widgets. It is running on both windows and linux. It was one of my first projects."
         }
         ListElement {
             title: "Boxy"
             url: "https://github.com/Odizinne/Boxy"
-            lightImage: "qrc:/images/boxy_light.png"
-            darkImage: "qrc:/images/boxy.png"
             description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
         }
         ListElement {
             title: "BigPictureTV"
             url: "https://github.com/Odizinne/BigPictureTV"
-            lightImage: "qrc:/images/bigpicturetv_light.png"
-            darkImage: "qrc:/images/bigpicturetv.png"
-            description: "A PC to console automation software relying on Steam big picture mode."
+            description: "A PC to console automation software relying on Steam big picture mode. Couch gaming ready with just one controller button press."
         }
         ListElement {
             title: "EnhancedDisplaySwitch"
             url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
-            lightImage: "qrc:/images/enhanceddisplayswitch_light.png"
-            darkImage: "qrc:/images/enhanceddisplayswitch.png"
             description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
         }
         ListElement {
             title: "AutoSceneSwitcher"
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
-            lightImage: "qrc:/images/autosceneswitcher_light.png"
-            darkImage: "qrc:/images/autosceneswitcher.png"
-            description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs."
+            description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs. Easy to setup."
         }
     }
 
@@ -305,7 +291,7 @@ ApplicationWindow {
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 cellWidth: width / targetColumns
-                cellHeight: cellWidth * 1.05
+                cellHeight: cellWidth * 0.7
 
                 model: projectsModel
                 clip: true
@@ -351,51 +337,13 @@ ApplicationWindow {
                             }
                         }
 
-                        Rectangle {
-                            id: projImage
+                        Text {
+                            id: projName
                             anchors {
                                 top: parent.top
                                 left: parent.left
                                 right: parent.right
-                                margins: 0
-                            }
-                            height: width * 9/16
-
-                            color: root.bgAccent
-                            topLeftRadius: 6
-                            topRightRadius: 6
-                            Image {
-                                source: root.Material.theme === Material.Dark ? model.darkImage : model.lightImage
-                                fillMode: Image.PreserveAspectCrop
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                anchors.top: parent.top
-                                anchors.bottom: parent.bottom
-                                width: parent.width * 1
-                                height: parent.height * 1
-                                anchors.margins: 15
-                                sourceClipRect: Qt.rect(1, 1, sourceSize.width - 2, sourceSize.height - 2)
-                                layer.enabled: true
-                                layer.effect: OpacityMask {
-                                    id: opacityMaskInstance
-                                    maskSource: Rectangle {
-                                        id: maskedRect
-                                        width: projImage.width
-                                        height: projImage.height
-                                        radius: 6
-                                    }
-                                }
-
-                            }
-                        }
-
-                        Text {
-                            id: projName
-                            anchors {
-                                top: projImage.bottom
-                                left: parent.left
-                                right: parent.right
-                                topMargin: 10
+                                topMargin: 25
                                 leftMargin: 15
                                 rightMargin: 15
                                 bottomMargin: 0
@@ -426,6 +374,7 @@ ApplicationWindow {
             }
         }
     }
+
     ScrollView {
         anchors.topMargin: 0
         anchors.bottomMargin: 0
@@ -652,7 +601,7 @@ ApplicationWindow {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: introText.implicitHeight + 40
-                    color: root.bgRed
+                    color: root.frameColor
                     radius: 6
                     border.width: 1
                     border.color: root.borderColor
@@ -676,29 +625,33 @@ ApplicationWindow {
                             {
                                 title: "Programming Journey",
                                 content: "My journey began with learning programming basics, where I discovered my love for logic. If something is supposed to work, it should work - this principle drives my approach to coding.",
-                                color: "#73d216"
+                                color: "#73d216",
+                                backgroundColor: root.bgGreen
                             },
                             {
                                 title: "Technologies",
                                 content: "I work primarily with Qt/QML, focusing on creating clean, user-friendly interfaces. While Windows is my daily driver, I ensure my projects work across different platforms when possible.",
-                                color: "#fcaf3e"
+                                color: "#fcaf3e",
+                                backgroundColor: root.bgOrange
                             },
                             {
                                 title: "Languages",
                                 content: "Native French speaker with a good understanding of written English. I enjoy the challenge of communicating across language barriers in the tech community.",
-                                color: "#ad7fa8"
+                                color: "#ad7fa8",
+                                backgroundColor: root.bgPurple
                             },
                             {
                                 title: "Approach",
                                 content: "I believe in following established conventions and creating intuitive user experiences. Documentation and AI tools are valuable allies in my learning process.",
-                                color: "#ef2929"
+                                color: "#ef2929",
+                                backgroundColor: root.bgRed
                             }
                         ]
 
                         delegate: Rectangle {
                             width: aboutColumn.width > 600 ? (aboutColumn.width - 15) / 2 : aboutColumn.width
                             height: aboutColumn.width > 600 ? 200 : cardColumn.implicitHeight + 40  // Fixed height when 2 per line
-                            color: root.frameColor
+                            color: modelData.backgroundColor
                             radius: 6
                             border.width: 1
                             border.color: root.borderColor
@@ -710,7 +663,7 @@ ApplicationWindow {
                                 radius: 2
                                 anchors {
                                     left: parent.left
-                                    leftMargin: 8
+                                    leftMargin: 10
                                     verticalCenter: parent.verticalCenter
                                 }
                             }
@@ -718,7 +671,7 @@ ApplicationWindow {
                             ColumnLayout {
                                 id: cardColumn
                                 anchors.fill: parent
-                                anchors.leftMargin: 20
+                                anchors.leftMargin: 25
                                 anchors.rightMargin: 20
                                 anchors.topMargin: 20
                                 anchors.bottomMargin: 20
