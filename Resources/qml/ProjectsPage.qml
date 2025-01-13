@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
+import QtQml.Models 2.15
 
 ScrollView {
     id: projectsView
@@ -17,34 +18,68 @@ ScrollView {
             text: "Projects overview"
             font.pixelSize: 30
             font.bold: true
-            anchors.left: parent.left
-            anchors.right: parent.right
+            anchors.horizontalCenter: parent.horizontalCenter
+
             anchors.top: parent.top
             anchors.topMargin: 30
             height: 50
             horizontalAlignment: Text.AlignHCenter
         }
 
+        TextField {
+            id: searchField
+            anchors {
+                top: overviewLabel.bottom
+                horizontalCenter: parent.horizontalCenter
+                margins: 20
+            }
+            width: overviewLabel.width
+            placeholderText: "Filter projects..."
+            font.pixelSize: 16
+        }
+
         GridView {
             id: grid
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: overviewLabel.bottom
+            anchors.top: searchField.bottom
+            anchors.topMargin: 10
 
-            // Fixed height based on content
-            height: Math.ceil(projectsModel.count / Math.floor(width / cellWidth)) * cellHeight
+            height: Math.ceil(visibleModel.count / Math.floor(width / cellWidth)) * cellHeight
 
             interactive: false
             anchors.leftMargin: 10
             anchors.rightMargin: 10
 
-            cacheBuffer: height * 2
+            cacheBuffer: Math.max(0, height * 2)
 
             property real cellSize: Math.floor(width / root.targetColumns)
             cellWidth: cellSize
             cellHeight: cellSize * 0.85
 
-            model: projectsModel
+            model: ListModel {
+                id: visibleModel
+
+                Component.onCompleted: {
+                    for (let i = 0; i < projectsModel.count; i++) {
+                        visibleModel.append(projectsModel.get(i))
+                    }
+                }
+            }
+
+            Connections {
+                target: searchField
+                function onTextChanged() {
+                    visibleModel.clear()
+                    for (let i = 0; i < projectsModel.count; i++) {
+                        let item = projectsModel.get(i)
+                        if (item.title.toLowerCase().includes(searchField.text.toLowerCase())) {
+                            visibleModel.append(item)
+                        }
+                    }
+                }
+            }
+
             clip: true
 
             delegate: Item {
