@@ -1,7 +1,7 @@
 import QtQuick
 import QtQuick.Controls.Material
 import QtQuick.Layouts
-import Qt5Compat.GraphicalEffects
+import "."
 
 ApplicationWindow {
     id: root
@@ -10,6 +10,7 @@ ApplicationWindow {
     visible: true
     title: qsTr("Flora's Portfolio")
 
+    // Properties
     property int selectedTab: 0
     property int spacing: 40
     property int targetColumns: Math.floor(width / (1920/5))
@@ -17,11 +18,13 @@ ApplicationWindow {
     Material.theme: Material.System
     Material.accent: Material.Red
 
+    // Colors
     property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ececec"
     property string topbarColor: Material.theme === Material.Dark ? "#313131" : "#e8e8e8"
     property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
     property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
 
+    // Background colors
     property string bgAccent: Material.theme === Material.Dark ?
                                   Qt.rgba(Material.color(Material.Red, Material.Shade200).r,
                                           Material.color(Material.Red, Material.Shade200).g,
@@ -60,16 +63,149 @@ ApplicationWindow {
 
     color: root.bgColor
 
+    ListModel {
+        id: projectsModel
+        ListElement {
+            title: "Retr0Mine"
+            darkImage: "qrc:/images/retr0mine.png"
+            lightImage: "qrc:/images/retr0mine.png"
+            url: "https://github.com/Odizinne/Retr0Mine"
+            description: "Retr0Mine is an attempt to create a modern looking minesweeper for a friend. It was designed with many QoL features to enhance gameplay. Runs on windows and linux."
+        }
+        ListElement {
+            title: "QuickSoundSwitcher"
+            darkImage: "qrc:/images/quicksoundswitcher.png"
+            lightImage: "qrc:/images/quicksoundswitcher.png"
+            url: "https://github.com/Odizinne/QuickSoundSwitcher"
+            description: "A custom all in one audio panel for windows featuring input and output device switch as well as a volume mixer. Made with close to native Ui for Windows 10 and 11."
+        }
+        ListElement {
+            title: "HeadsetControl-Qt"
+            darkImage: "qrc:/images/headsetcontrolqt.png"
+            lightImage: "qrc:/images/headsetcontrolqt.png"
+            url: "https://github.com/Odizinne/HeadsetControl-Qt"
+            description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd using Qt-Widgets. It is running on both windows and linux. It was one of my first projects."
+        }
+        ListElement {
+            title: "Boxy"
+            darkImage: "qrc:/images/boxy.png"
+            lightImage: "qrc:/images/boxy.png"
+            url: "https://github.com/Odizinne/Boxy"
+            description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
+        }
+        ListElement {
+            title: "BigPictureTV"
+            darkImage: "qrc:/images/bigpicturetv_light.png"
+            lightImage: "qrc:/images/bigpicturetv_dark.png"
+            url: "https://github.com/Odizinne/BigPictureTV"
+            description: "A PC to console automation software relying on Steam big picture mode. Couch gaming ready with just one controller button press."
+        }
+        ListElement {
+            darkImage: "qrc:/images/powershell_light.png"
+            lightImage: "qrc:/images/powershell_dark.png"
+            title: "EnhancedDisplaySwitch"
+            url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
+            description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
+        }
+        ListElement {
+            darkImage: "qrc:/images/autosceneswitcher.png"
+            lightImage: "qrc:/images/autosceneswitcher.png"
+            title: "AutoSceneSwitcher"
+            url: "https://github.com/Odizinne/AutoSceneSwitcher"
+            description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs. Easy to setup."
+        }
+        ListElement {
+            darkImage: "qrc:/images/powershell_light.png"
+            lightImage: "qrc:/images/powershell_dark.png"
+            title: "Sunshine-Toolbox"
+            url: "https://github.com/Odizinne/sunshine-toolbox"
+            description: "An automation cli tool for sunshine moonlight local streaming. Allow to change host resolution to match client, toggle hdr, start and monitor BigPicture process..."
+        }
+        ListElement {
+            darkImage: "qrc:/images/openrgbinstaller.png"
+            lightImage: "qrc:/images/openrgbinstaller.png"
+            title: "OpenRGB-Installer"
+            url: "https://github.com/Odizinne/OpenRGB-Installer"
+            description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to installed specific version or just the latest stable or experimental one."
+        }
+        ListElement {
+            darkImage: "qrc:/images/makesense_light.png"
+            lightImage: "qrc:/images/makesense_dark.png"
+            title: "makeSense"
+            url: "https://github.com/Odizinne/makeSense"
+            description: "makeSense ias a PyQt6 dualsense driver for windows. It was designed to monitor battery state, use touchpad as pointer, set rgb color, and emulate XBOX controller with ViGEmBus."
+        }
+        ListElement {
+            darkImage: "qrc:/images/pokeroguestandalone.png"
+            lightImage: "qrc:/images/pokeroguestandalone.png"
+            title: "Pokerogue-Standalone"
+            url: "https://github.com/Odizinne/Pokerogue-Standalone"
+            description: "An electron wrapper for Pokérogue made with couch gaming and steam deck in mind. Features some qol such as fullscreen by default, themed cursor and mouse cursor hiding on idle."
+        }
+    }
+
+    property var skillsModel: [
+        {
+            category: "Desktop Development",
+            color: "#73d216",
+            bgColor: root.bgGreen,
+            skills: [
+                {name: "Qt/QML", level: 0.9},
+                {name: "Qt Widgets", level: 0.7},
+                {name: "C++", level: 0.8}
+            ]
+        },
+        {
+            category: "Operating Systems",
+            color: "#fcaf3e",
+            bgColor: bgOrange,
+            skills: [
+                {name: "Windows", level: 0.95},
+                {name: "Debian", level: 0.8},
+                {name: "Arch Linux", level: 0.65},
+                {name: "Fedora", level: 0.65},
+                {name: "macOS", level: 0.0}
+            ]
+        },
+        {
+            category: "Python Development",
+            color: "#ad7fa8",
+            bgColor: bgPurple,
+            skills: [
+                {name: "Python", level: 0.7},
+                {name: "PyQt/PySide", level: 0.65}
+            ]
+        },
+        {
+            category: "Development Tools",
+            color: "#ef2929",
+            bgColor: bgRed,
+            skills: [
+                {name: "Git", level: 0.85},
+                {name: "Qt Creator", level: 0.8},
+                {name: "VSCode", level: 0.8},
+                {name: "GitHub Workflow", level: 0.75}
+            ]
+        },
+        {
+            category: "Other Technologies",
+            color: "#babdb6",
+            bgColor: bgGrey,
+            skills: [
+                {name: "Electron", level: 0.5}
+            ]
+        }
+    ]
+
     Rectangle {
         color: root.bgColor
         opacity: 0
         anchors.fill: parent
 
         Component.onCompleted: {
-            opacity = 1  // Animate to fully visible
+            opacity = 1
         }
 
-        // Add behavior for smooth animation
         Behavior on opacity {
             NumberAnimation {
                 duration: 1000
@@ -77,745 +213,77 @@ ApplicationWindow {
             }
         }
 
-
-        ListModel {
-            id: projectsModel
-            ListElement {
-                title: "Retr0Mine"
-                darkImage: "qrc:/images/retr0mine.png"
-                lightImage: "qrc:/images/retr0mine.png"
-                url: "https://github.com/Odizinne/Retr0Mine"
-                description: "Retr0Mine is an attempt to create a modern looking minesweeper for a friend. It was designed with many QoL features to enhance gameplay. Runs on windows and linux."
-            }
-            ListElement {
-                title: "QuickSoundSwitcher"
-                darkImage: "qrc:/images/quicksoundswitcher.png"
-                lightImage: "qrc:/images/quicksoundswitcher.png"
-                url: "https://github.com/Odizinne/QuickSoundSwitcher"
-                description: "A custom all in one audio panel for windows featuring input and output device switch as well as a volume mixer. Made with close to native Ui for Windows 10 and 11."
-            }
-            ListElement {
-                title: "HeadsetControl-Qt"
-                darkImage: "qrc:/images/headsetcontrolqt.png"
-                lightImage: "qrc:/images/headsetcontrolqt.png"
-                url: "https://github.com/Odizinne/HeadsetControl-Qt"
-                description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd using Qt-Widgets. It is running on both windows and linux. It was one of my first projects."
-            }
-            ListElement {
-                title: "Boxy"
-                darkImage: "qrc:/images/boxy.png"
-                lightImage: "qrc:/images/boxy.png"
-                url: "https://github.com/Odizinne/Boxy"
-                description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
-            }
-            ListElement {
-                title: "BigPictureTV"
-                darkImage: "qrc:/images/bigpicturetv_light.png"
-                lightImage: "qrc:/images/bigpicturetv_dark.png"
-                url: "https://github.com/Odizinne/BigPictureTV"
-                description: "A PC to console automation software relying on Steam big picture mode. Couch gaming ready with just one controller button press."
-            }
-            ListElement {
-                darkImage: "qrc:/images/powershell_light.png"
-                lightImage: "qrc:/images/powershell_dark.png"
-                title: "EnhancedDisplaySwitch"
-                url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
-                description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
-            }
-            ListElement {
-                darkImage: "qrc:/images/autosceneswitcher.png"
-                lightImage: "qrc:/images/autosceneswitcher.png"
-                title: "AutoSceneSwitcher"
-                url: "https://github.com/Odizinne/AutoSceneSwitcher"
-                description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs. Easy to setup."
-            }
-            ListElement {
-                darkImage: "qrc:/images/powershell_light.png"
-                lightImage: "qrc:/images/powershell_dark.png"
-                title: "Sunshine-Toolbox"
-                url: "https://github.com/Odizinne/sunshine-toolbox"
-                description: "An automation cli tool for sunshine moonlight local streaming. Allow to change host resolution to match client, toggle hdr, start and monitor BigPicture process..."
-            }
-            ListElement {
-                darkImage: "qrc:/images/openrgbinstaller.png"
-                lightImage: "qrc:/images/openrgbinstaller.png"
-                title: "OpenRGB-Installer"
-                url: "https://github.com/Odizinne/OpenRGB-Installer"
-                description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to installed specific version or just the latest stable or experimental one."
-            }
-            ListElement {
-                darkImage: "qrc:/images/makesense_light.png"
-                lightImage: "qrc:/images/makesense_dark.png"
-                title: "makeSense"
-                url: "https://github.com/Odizinne/makeSense"
-                description: "makeSense ias a PyQt6 dualsense driver for windows. It was designed to monitor battery state, use touchpad as pointer, set rgb color, and emulate XBOX controller with ViGEmBus."
-            }
-            ListElement {
-                darkImage: "qrc:/images/pokeroguestandalone.png"
-                lightImage: "qrc:/images/pokeroguestandalone.png"
-                title: "Pokerogue-Standalone"
-                url: "https://github.com/Odizinne/Pokerogue-Standalone"
-                description: "An electron wrapper for Pokérogue made with couch gaming and steam deck in mind. Features some qol such as fullscreen by default, themed cursor and mouse cursor hiding on idle."
-            }
-        }
-
-        Rectangle {
+        TopBar {
             id: topbar
-            anchors.topMargin: 0
-            anchors.bottomMargin: 30
-            anchors.leftMargin: 0
-            anchors.rightMargin: 0
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            height: 60
-            color: root.topbarColor
-
-
-            RowLayout {
-                id: topbarLayout
-                spacing: 15
-                anchors.fill: parent
-
-                Item {
-                    Layout.preferredWidth: themeSwitch.width
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    flat: true
-                    highlighted: root.selectedTab === 0
-                    text: "Welcome"
-                    onClicked: {
-                        root.selectedTab = 0
-                    }
-                }
-
-                Button {
-                    flat: true
-                    highlighted: root.selectedTab === 1
-                    text: "Projects"
-                    onClicked: {
-                        root.selectedTab = 1
-                    }
-                }
-                Button {
-                    flat: true
-                    highlighted: root.selectedTab === 2
-                    text: "Skills"
-                    onClicked: {
-                        root.selectedTab = 2
-                    }
-                }
-                Button {
-                    flat: true
-                    highlighted: root.selectedTab === 3
-                    text: "About me"
-                    onClicked: {
-                        root.selectedTab = 3
-                    }
-                }
-
-                ToolSeparator {
-
-                }
-
-                Button {
-                    id: githubButton
-                    flat: true
-                    text: "Github"
-                    onClicked: {
-                        Qt.openUrlExternally("https://github.com/odizinne")
-                    }
-                }
-
-                Button {
-                    flat: true
-                    text: "KoFi"
-                    width: githubButton.width
-                    onClicked: {
-                        Qt.openUrlExternally("https://ko-fi.com/odizinne")
-                    }
-                }
-
-                Item {
-                    Layout.fillWidth: true
-                }
-
-                Image {
-                    id: themeImage
-                    source: Material.theme === Material.Dark ? "qrc:/icons/moon.png" : "qrc:/icons/sun.png"
-                    Layout.preferredHeight: themeSwitch.height - 10
-                    Layout.rightMargin: -15
-                    Layout.preferredWidth: height
-
-                    rotation: themeSwitch.checked ? 180 : 0
-                    Behavior on rotation {
-                        NumberAnimation {
-                            duration: 300
-                            easing.type: Easing.OutQuad
-                        }
-                    }
-
-                    opacity: 1
-                    Behavior on opacity {
-                        NumberAnimation {
-                            duration: 150
-                        }
-                    }
-
-                    MouseArea {
-                        anchors.fill: parent
-                        onClicked: {
-                            themeSwitch.checked = !themeSwitch.checked
-                        }
-                    }
-                }
-
-                Switch {
-                    id: themeSwitch
-                    Component.onCompleted: checked = (root.Material.theme === root.Material.Dark)
-                    onCheckedChanged: {
-                        if (checked) {
-                            root.Material.theme = root.Material.Dark
-                        } else {
-                            root.Material.theme = root.Material.Light
-                        }
-                    }
-                }
+            selectedTab: root.selectedTab
+            onTabSelected: function(tab) {
+                root.selectedTab = tab
             }
         }
 
-        ScrollView {
-            anchors.topMargin: 0
-            anchors.bottomMargin: 0
-            anchors.leftMargin: 0
-            anchors.rightMargin: 0
+        StackLayout {
+            id: mainStack
             anchors.top: topbar.bottom
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            clip: true
-            visible: opacity > 0
-            opacity: root.selectedTab === 0 ? 1 : 0
+            currentIndex: root.selectedTab
 
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: root.animationDuration
-                    easing.type: Easing.InOutQuad
-                }
-            }
+            Loader {
+                id: welcomeLoader
+                active: root.selectedTab === 0 || opacity > 0
+                source: "WelcomePage.qml"
+                opacity: root.selectedTab === 0 ? 1 : 0
 
-            Item {
-                width: parent.width
-                height: parent.height
-
-                ColumnLayout {
-                    anchors.centerIn: parent
-                    spacing: 20
-                    width: Math.min(parent.width - 80, 600)
-
-                    Label {
-                        Layout.fillWidth: true
-                        text: "Welcome to my Portfolio"
-                        font.pixelSize: 40
-                        font.bold: true
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    Label {
-                        Layout.fillWidth: true
-                        text: "I'm a self learning Qt Desktop applications Developer focused on creating useful applications"
-                        font.pixelSize: 20
-                        wrapMode: Text.WordWrap
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    Button {
-                        Layout.alignment: Qt.AlignHCenter
-                        text: "View My Projects"
-                        onClicked: root.selectedTab = 1
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }
-        }
 
-        ScrollView {
-            //anchors.topMargin: 30
-            anchors.bottomMargin: 0
-            anchors.leftMargin: 0
-            anchors.rightMargin: 0
-            anchors.top: topbar.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            clip: true
-            visible: opacity > 0  // Bind visibility to opacity
-            opacity: root.selectedTab === 1 ? 1 : 0  // Use opacity instead of visible
+            Loader {
+                id: projectsLoader
+                active: root.selectedTab === 1 || opacity > 0
+                source: "ProjectsPage.qml"
+                opacity: root.selectedTab === 1 ? 1 : 0
 
-            // Add fade animation
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: root.animationDuration  // Adjust duration as needed
-                    easing.type: Easing.InOutQuad
-                }
-            }
-            ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-            contentWidth: availableWidth
-            contentHeight: overviewLabel.height + grid.contentHeight + 40
-
-            Item {
-                width: parent.width
-                height: overviewLabel.height + grid.height
-
-                Label {
-                    id: overviewLabel
-                    text: "Projects overview"
-                    font.pixelSize: 30
-                    font.bold: true
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: parent.top
-                    anchors.topMargin: 30
-                    height: 50
-                    horizontalAlignment: Text.AlignHCenter
-                }
-
-                GridView {
-                    id: grid
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    anchors.top: overviewLabel.bottom
-                    height: contentHeight
-                    interactive: false
-                    anchors.leftMargin: 10
-                    anchors.rightMargin: 10
-                    cellWidth: width / targetColumns
-                    cellHeight: cellWidth * 0.85
-
-                    model: projectsModel
-                    clip: true
-
-                    delegate: Item {
-                        width: grid.cellWidth
-                        height: grid.cellHeight
-
-                        Rectangle {
-                            id: cardRect
-                            anchors.fill: parent
-
-                            anchors.margins: root.spacing / 2
-                            color: root.frameColor
-                            radius: 6
-                            clip: true
-                            border.width: 1
-                            border.color: root.borderColor
-
-                            transform: Scale {
-                                id: cardScale
-                                origin.x: cardRect.width / 2
-                                origin.y: cardRect.height / 2
-                            }
-
-                            // Add scale animation
-                            Behavior on scale {
-                                NumberAnimation {
-                                    duration: 200
-                                    easing.type: Easing.OutQuad
-                                }
-                            }
-
-                            MouseArea {
-                                anchors.fill: parent
-                                cursorShape: Qt.PointingHandCursor
-                                hoverEnabled: true  // Enable hover detection
-
-                                onEntered: cardRect.scale = 1.05  // Scale up on hover
-                                onExited: cardRect.scale = 1.0    // Return to normal size
-                                onClicked: {
-                                    Qt.openUrlExternally(model.url)
-                                }
-                            }
-
-
-                            Image {
-                                id: projImage
-                                source: root.Material.theme === Material.Dark ? model.darkImage : model.lightImage
-                                fillMode: Image.PreserveAspectFit
-                                anchors.left: parent.left
-                                anchors.right: parent.right
-                                anchors.top: parent.top
-                                //anchors.bottom: parent.bottom
-                                sourceSize.height:  height
-                                sourceSize.width: width
-                                width: parent.width
-                                height: parent.height / 4
-                                anchors.margins: 15
-                                //sourceClipRect: Qt.rect(1, 1, sourceSize.width - 2, sourceSize.height - 2)
-
-                            }
-
-
-                            Text {
-                                id: projName
-                                anchors {
-                                    top: projImage.bottom
-                                    left: parent.left
-                                    right: parent.right
-                                    leftMargin: 15
-                                    rightMargin: 15
-                                    bottomMargin: 15
-                                    topMargin: 15
-                                }
-
-                                text: model.title
-                                color: root.Material.accent
-                                font.bold: true
-                                font.pixelSize: 22
-                                horizontalAlignment: Text.AlignHCenter
-                            }
-
-                            Text {
-                                anchors {
-                                    top: projName.bottom
-                                    left: parent.left
-                                    right: parent.right
-                                    bottom: parent.bottom
-                                    margins: 15
-                                }
-                                text: model.description
-                                color: Material.foreground
-                                wrapMode: Text.WordWrap
-                                font.pixelSize: 14
-                                verticalAlignment: Text.AlignVCenter
-                            }
-                        }
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }
-        }
 
-        ScrollView {
-            anchors.topMargin: 0
-            anchors.bottomMargin: 0
-            anchors.leftMargin: 0
-            anchors.rightMargin: 0
-            anchors.top: topbar.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            clip: true
-            visible: opacity > 0
-            opacity: root.selectedTab === 2 ? 1 : 0
+            Loader {
+                id: skillsLoader
+                active: root.selectedTab === 2 || opacity > 0
+                source: "SkillsPage.qml"
+                opacity: root.selectedTab === 2 ? 1 : 0
 
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: root.animationDuration
-                    easing.type: Easing.InOutQuad
-                }
-            }
-
-            ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-            contentWidth: availableWidth
-
-            Item {
-                width: parent.width
-                implicitHeight: mainColumn.implicitHeight
-                anchors.bottomMargin: 15
-
-
-                ColumnLayout {
-                    id: mainColumn
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    width: root.height > root.width ? parent.width : Math.max(parent.width / 2, 600)
-                    spacing: 30
-
-                    Label {
-                        Layout.fillWidth: true
-                        text: "Skills & Technologies"
-                        font.pixelSize: 30
-                        font.bold: true
-                        Layout.topMargin: 30
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    property var skillsModel: [
-                        {
-                            category: "Desktop Development",
-                            color: "#73d216",
-                            bgColor: root.bgGreen,
-                            skills: [
-                                {name: "Qt/QML", level: 0.9},
-                                {name: "Qt Widgets", level: 0.7},
-                                {name: "C++", level: 0.8}
-                            ]
-                        },
-                        {
-                            category: "Operating Systems",
-                            color: "#fcaf3e",
-                            bgColor: bgOrange,
-                            skills: [
-                                {name: "Windows", level: 0.95},
-                                {name: "Debian", level: 0.8},
-                                {name: "Arch Linux", level: 0.65},
-                                {name: "Fedora", level: 0.65},
-                                {name: "macOS", level: 0.0}
-                            ]
-                        },
-                        {
-                            category: "Python Development",
-                            color: "#ad7fa8",
-                            bgColor: bgPurple,
-                            skills: [
-                                {name: "Python", level: 0.7},
-                                {name: "PyQt/PySide", level: 0.65}
-                            ]
-                        },
-                        {
-                            category: "Development Tools",
-                            color: "#ef2929",
-                            bgColor: bgRed,
-                            skills: [
-                                {name: "Git", level: 0.85},
-                                {name: "Qt Creator", level: 0.8},
-                                {name: "VSCode", level: 0.8},
-                                {name: "GitHub Workflow", level: 0.75}
-                            ]
-                        },
-                        {
-                            category: "Other Technologies",
-                            color: "#babdb6",
-                            bgColor: bgGrey,
-                            skills: [
-                                {name: "Electron", level: 0.5}
-                            ]
-                        }
-                    ]
-
-                    Repeater {
-                        model: parent.skillsModel
-
-                        delegate: Rectangle {
-                            property var categoryData: modelData
-
-                            Layout.fillWidth: true
-                            Layout.leftMargin: 40
-                            Layout.rightMargin: 40
-                            Layout.preferredHeight: skillsColumn.implicitHeight + 40
-                            color: modelData.bgColor
-                            radius: 6
-                            border.width: 1
-                            border.color: root.borderColor
-
-                            ColumnLayout {
-                                id: skillsColumn
-                                anchors {
-                                    left: parent.left
-                                    right: parent.right
-                                    top: parent.top
-                                    margins: 20
-                                }
-                                spacing: 15
-
-                                Label {
-                                    Layout.fillWidth: true
-                                    text: categoryData.category
-                                    font.bold: true
-                                    font.pixelSize: 22
-                                }
-
-                                Repeater {
-                                    model: categoryData.skills
-
-                                    delegate: ColumnLayout {
-                                        Layout.fillWidth: true
-                                        spacing: 5
-
-                                        RowLayout {
-                                            Layout.fillWidth: true
-                                            Label {
-                                                text: modelData.name
-                                                font.pixelSize: 16
-                                            }
-                                            Label {
-                                                text: Math.round(modelData.level * 100) + "%"
-                                                opacity: 0.7
-                                                font.pixelSize: 14
-                                            }
-                                        }
-
-                                        Rectangle {
-                                            Layout.fillWidth: true
-                                            Layout.preferredHeight: 6
-                                            radius: height / 2
-                                            color: root.borderColor
-
-                                            Rectangle {
-                                                width: parent.width * modelData.level
-                                                height: parent.height
-                                                radius: parent.radius
-                                                color: categoryData.color
-
-                                                Behavior on width {
-                                                    NumberAnimation {
-                                                        duration: 1000
-                                                        easing.type: Easing.OutQuad
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    Item {
-                        Layout.preferredHeight: 0
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }
-        }
 
-        ScrollView {
-            anchors.topMargin: 0
-            anchors.bottomMargin: 0
-            anchors.leftMargin: 0
-            anchors.rightMargin: 0
-            anchors.top: topbar.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            clip: true
-            visible: opacity > 0
-            opacity: root.selectedTab === 3 ? 1 : 0
+            Loader {
+                id: aboutLoader
+                active: root.selectedTab === 3 || opacity > 0
+                source: "AboutPage.qml"
+                opacity: root.selectedTab === 3 ? 1 : 0
 
-            Behavior on opacity {
-                NumberAnimation {
-                    duration: root.animationDuration
-                    easing.type: Easing.InOutQuad
-                }
-            }
-
-            ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
-            contentWidth: availableWidth
-
-            Item {
-                width: parent.width
-                implicitHeight: aboutColumn.implicitHeight + 60
-
-                ColumnLayout {
-                    id: aboutColumn
-                    anchors.centerIn: parent
-                    width: Math.min(parent.width - 80, 800)
-                    spacing: 20
-
-                    Label {
-                        Layout.fillWidth: true
-                        text: "Hello, I'm Flora"
-                        Layout.bottomMargin: 10
-                        font.pixelSize: 30
-                        font.bold: true
-                        horizontalAlignment: Text.AlignHCenter
-                    }
-
-                    Rectangle {
-                        Layout.fillWidth: true
-                        Layout.preferredHeight: introText.implicitHeight + 40
-                        color: root.frameColor
-                        radius: 6
-                        border.width: 1
-                        border.color: root.borderColor
-
-                        Label {
-                            id: introText
-                            anchors.fill: parent
-                            anchors.margins: 20
-                            text: "I'm a self-taught programmer with a passion for clean, logical solutions. Originally from France, I enjoy exploring technology and creating intuitive user interfaces."
-                            wrapMode: Text.WordWrap
-                            font.pixelSize: 16
-                        }
-                    }
-
-                    Flow {
-                        Layout.fillWidth: true
-                        spacing: 15
-
-                        Repeater {
-                            model: [
-                                {
-                                    title: "Programming Journey",
-                                    content: "My journey began with learning programming basics, where I discovered my love for logic. If something is supposed to work, it should work - this principle drives my approach to coding.",
-                                    color: "#73d216",
-                                    backgroundColor: root.bgGreen
-                                },
-                                {
-                                    title: "Technologies",
-                                    content: "I work primarily with Qt/QML, focusing on creating clean, user-friendly interfaces. While Windows is my daily driver, I ensure my projects work across different platforms when possible.",
-                                    color: "#fcaf3e",
-                                    backgroundColor: root.bgOrange
-                                },
-                                {
-                                    title: "Languages",
-                                    content: "Native French speaker with a good understanding of written English. I enjoy the challenge of communicating across language barriers in the tech community.",
-                                    color: "#ad7fa8",
-                                    backgroundColor: root.bgPurple
-                                },
-                                {
-                                    title: "Approach",
-                                    content: "I believe in following established conventions and creating intuitive user experiences. Documentation and AI tools are valuable allies in my learning process.",
-                                    color: "#ef2929",
-                                    backgroundColor: root.bgRed
-                                }
-                            ]
-
-                            delegate: Rectangle {
-                                width: aboutColumn.width > 600 ? (aboutColumn.width - 15) / 2 : aboutColumn.width
-                                height: aboutColumn.width > 600 ? 200 : cardColumn.implicitHeight + 40  // Fixed height when 2 per line
-                                color: modelData.backgroundColor
-                                radius: 6
-                                border.width: 1
-                                border.color: root.borderColor
-
-                                Rectangle {
-                                    width: 4
-                                    height: parent.height - 14
-                                    color: modelData.color
-                                    radius: 2
-                                    anchors {
-                                        left: parent.left
-                                        leftMargin: 10
-                                        verticalCenter: parent.verticalCenter
-                                    }
-                                }
-
-                                ColumnLayout {
-                                    id: cardColumn
-                                    anchors.fill: parent
-                                    anchors.leftMargin: 25
-                                    anchors.rightMargin: 20
-                                    anchors.topMargin: 20
-                                    anchors.bottomMargin: 20
-                                    spacing: 10
-
-                                    Label {
-                                        text: modelData.title
-                                        font.bold: true
-                                        font.pixelSize: 18
-                                    }
-
-                                    Label {
-                                        Layout.fillWidth: true
-                                        Layout.fillHeight: true
-                                        text: modelData.content
-                                        wrapMode: Text.WordWrap
-                                        font.pixelSize: 14
-                                    }
-                                }
-                            }
-                        }
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.InOutQuad
                     }
                 }
             }

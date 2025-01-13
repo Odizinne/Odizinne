@@ -1,6 +1,11 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/Main.qml</file>
+        <file>qml/TopBar.qml</file>
+        <file>qml/WelcomePage.qml</file>
+        <file>qml/ProjectsPage.qml</file>
+        <file>qml/SkillsPage.qml</file>
+        <file>qml/AboutPage.qml</file>
         <file>icons/moon.png</file>
         <file>icons/sun.png</file>
         <file>font/SpaceMono-Regular.ttf</file>
