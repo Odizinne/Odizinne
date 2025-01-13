@@ -13,7 +13,7 @@ ApplicationWindow {
     // Properties
     property int selectedTab: 0
     property int spacing: 40
-    property int targetColumns: Math.floor(width / (1920/5))
+    property int targetColumns: Math.floor(width / (1900/5))
     property int animationDuration: 400
     Material.theme: Material.System
     Material.accent: Material.Red
