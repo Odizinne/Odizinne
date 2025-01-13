@@ -178,6 +178,28 @@ ApplicationWindow {
                 }
             }
 
+            ToolSeparator {
+
+            }
+
+            Button {
+                id: githubButton
+                flat: true
+                text: "Github"
+                onClicked: {
+                    Qt.openUrlExternally("https://github.com/odizinne")
+                }
+            }
+
+            Button {
+                flat: true
+                text: "KoFi"
+                width: githubButton.width
+                onClicked: {
+                    Qt.openUrlExternally("https://ko-fi.com/odizinne")
+                }
+            }
+
             Item {
                 Layout.fillWidth: true
             }
