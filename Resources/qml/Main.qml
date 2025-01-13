@@ -264,7 +264,7 @@ ApplicationWindow {
         }
         ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
         contentWidth: availableWidth
-        contentHeight: overviewLabel.height + grid.contentHeight
+        contentHeight: overviewLabel.height + grid.contentHeight + 40
 
         Item {
             width: parent.width
@@ -289,11 +289,11 @@ ApplicationWindow {
                 anchors.right: parent.right
                 anchors.top: overviewLabel.bottom
                 height: contentHeight
-                interactive: false  // Disable GridView scrolling
+                interactive: false
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 cellWidth: width / targetColumns
-                cellHeight: cellWidth * 1.4
+                cellHeight: cellWidth * 1.45
 
                 model: projectsModel
                 clip: true
