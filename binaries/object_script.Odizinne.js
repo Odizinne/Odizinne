@@ -1,6 +1,6 @@
 main.obj
-odizinnedotnet.js_plugin_import.obj
-odizinnedotnet.js_qml_plugin_import.obj
+odizinne.js_plugin_import.obj
+odizinne.js_qml_plugin_import.obj
 qrc_resources.obj
 C:/Qt/6.8.1/wasm_singlethread/lib/objects-Release/QWasmIntegrationPlugin_resources_1/.qt/rcc/qrc_wasmfonts_init.cpp.o
 C:/Qt/6.8.1/wasm_singlethread/lib/objects-Release/QWasmIntegrationPlugin_resources_2/.qt/rcc/qrc_wasmwindow_init.cpp.o
