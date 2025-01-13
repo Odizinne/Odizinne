@@ -307,6 +307,7 @@ ApplicationWindow {
 
                         anchors.margins: root.spacing / 2
                         color: root.frameColor
+                        //color: root.bgRed
                         radius: 6
                         clip: true
                         border.width: 1
@@ -322,7 +323,8 @@ ApplicationWindow {
                             }
                             height: width
 
-                            color: root.bgRed
+                            //color: root.bgRed
+                            color: "transparent"
                             topLeftRadius: 6
                             topRightRadius: 6
                             Image {
@@ -341,7 +343,7 @@ ApplicationWindow {
                                 margins: 15
                             }
                             text: model.title
-                            color: Material.foreground
+                            color: root.Material.accent
                             font.bold: true
                             font.pixelSize: 22
                             horizontalAlignment: Text.AlignHCenter
