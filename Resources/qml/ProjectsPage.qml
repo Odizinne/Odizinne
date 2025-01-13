@@ -31,9 +31,9 @@ ScrollView {
             anchors {
                 top: overviewLabel.bottom
                 horizontalCenter: parent.horizontalCenter
-                margins: 20
+                margins: 30
             }
-            width: overviewLabel.width
+            width: overviewLabel.width * 2
             placeholderText: "Filter projects..."
             font.pixelSize: 16
         }

@@ -35,6 +35,7 @@ ScrollView {
                 Layout.alignment: Qt.AlignHCenter
                 text: "View My Projects"
                 onClicked: root.selectedTab = 1
+                highlighted: true
             }
         }
     }
