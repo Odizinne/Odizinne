@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Main.qml</file>
+        <file>images/retr0mine.png</file>
+        <file>images/quicksoundswitcher.png</file>
+        <file>images/enhanceddisplayswitch.png</file>
+        <file>images/autosceneswitcher.png</file>
+        <file>images/headsetcontrolqt.png</file>
+        <file>images/bigpicturetv.png</file>
+        <file>images/boxy.png</file>
+        <file>font/SpaceMono-Regular.ttf</file>
+    </qresource>
+</RCC>

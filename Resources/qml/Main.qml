@@ -1,5 +1,5 @@
 import QtQuick
-import QtQuick.Controls.FluentWinUI3
+import QtQuick.Controls.Material
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 
@@ -11,81 +11,85 @@ ApplicationWindow {
     title: qsTr("Flora's Portfolio")
     property int selectedTab: 0
     property int spacing: 40
-    property int targetColumns: Math.floor(width / (1920/4))
+    property int targetColumns: Math.floor(width / (1920/5))
     property int animationDuration: 400
+    Material.theme: Material.Light
+    Material.accent: Material.LightGreen
+
+
+    property string frameColor: Material.theme === Material.Dark ? "#070707" : "#f8f8f8"
+    property string topbarColor: Material.theme === Material.Dark ? "#181818" : "#e8e8e8"
+    property string imageBGColor: Material.color(Material.LightGreen, Material.Shade50)
+    property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
+    property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
+
+    color: root.bgColor
 
     ListModel {
         id: projectsModel
         ListElement {
             title: "Retr0Mine"
             url: "https://github.com/Odizinne/Retr0Mine"
-            image: "qrc:/retr0mine.png"
+            image: "qrc:/images/retr0mine.png"
             description: "Retr0Mine is an attempt to create a modern looking minesweeper. It was designed with many QoL features to enhance gameplay."
         }
         ListElement {
             title: "QuickSoundSwitcher"
             url: "https://github.com/Odizinne/QuickSoundSwitcher"
-            image: "qrc:/quicksoundswitcher.png"
+            image: "qrc:/images/quicksoundswitcher.png"
             description: "A custom all in one audio panel for windows, aiming to look as native as possible."
         }
         ListElement {
             title: "HeadsetControl-Qt"
             url: "https://github.com/Odizinne/HeadsetControl-Qt"
-            image: "qrc:/headsetcontrolqt.png"
+            image: "qrc:/images/headsetcontrolqt.png"
             description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd. It is running on both windows and linux"
         }
         ListElement {
             title: "Boxy"
             url: "https://github.com/Odizinne/Boxy"
-            image: "qrc:/boxy.png"
+            image: "qrc:/images/boxy.png"
             description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
         }
         ListElement {
             title: "BigPictureTV"
             url: "https://github.com/Odizinne/BigPictureTV"
-            image: "qrc:/bigpicturetv.png"
+            image: "qrc:/images/bigpicturetv.png"
             description: "A PC to console automation software relying on Steam big picture mode."
         }
         ListElement {
             title: "EnhancedDisplaySwitch"
             url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
-            image: "qrc:/enhanceddisplayswitch.png"
+            image: "qrc:/images/enhanceddisplayswitch.png"
             description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
         }
         ListElement {
             title: "AutoSceneSwitcher"
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
-            image: "qrc:/autosceneswitcher.png"
+            image: "qrc:/images/autosceneswitcher.png"
             description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs."
         }
     }
 
     Rectangle {
         id: topbar
-        anchors.topMargin: 15
+        anchors.topMargin: 0
         anchors.bottomMargin: 30
-        anchors.leftMargin: 30
-        anchors.rightMargin: 30
+        anchors.leftMargin: 0
+        anchors.rightMargin: 0
 
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        radius: 12
+        //radius: 12
         height: 60
-        color: "#363636"
+        color: root.topbarColor
 
 
         RowLayout {
             id: topbarLayout
             spacing: 15
             anchors.fill: parent
-            Label {
-                id: ownerLabel
-                text: "Odizinne"
-                Layout.leftMargin: 20
-                font.bold: true
-                font.pixelSize: 18
-            }
 
             Item {
                 Layout.fillWidth: true
@@ -129,10 +133,6 @@ ApplicationWindow {
                 Layout.fillWidth: true
             }
 
-            Item {
-                Layout.preferredWidth: ownerLabel.width
-                Layout.rightMargin: 20
-            }
         }
     }
 
@@ -240,7 +240,7 @@ ApplicationWindow {
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 cellWidth: width / targetColumns
-                cellHeight: cellWidth * 1.3
+                cellHeight: cellWidth * 1.4
 
                 model: projectsModel
                 clip: true
@@ -251,10 +251,13 @@ ApplicationWindow {
 
                     Rectangle {
                         anchors.fill: parent
+
                         anchors.margins: root.spacing / 2
-                        color: "#363636"
-                        radius: 12
+                        color: root.frameColor
+                        radius: 6
                         clip: true
+                        border.width: 1
+                        border.color: root.borderColor
 
                         Rectangle {
                             id: projImage
@@ -262,12 +265,13 @@ ApplicationWindow {
                                 top: parent.top
                                 left: parent.left
                                 right: parent.right
-                                margins: 0
+                                margins: 1
                             }
                             height: width
-                            color: "#1c1c1c"
-                            topLeftRadius: 12
-                            topRightRadius: 12
+
+                            color: root.imageBGColor
+                            topLeftRadius: 6
+                            topRightRadius: 6
                             Image {
                                 source: model.image
                                 fillMode: Image.PreserveAspectCrop
@@ -284,7 +288,7 @@ ApplicationWindow {
                                 margins: 15
                             }
                             text: model.title
-                            color: "#ffffff"
+                            color: Material.foreground
                             font.bold: true
                             font.pixelSize: 22
                             horizontalAlignment: Text.AlignHCenter
@@ -299,9 +303,9 @@ ApplicationWindow {
                                 margins: 15
                             }
                             text: model.description
-                            color: "white"
+                            color: Material.foreground
                             wrapMode: Text.WordWrap
-                            font.pixelSize: 16
+                            font.pixelSize: 14
                             verticalAlignment: Text.AlignVCenter
                         }
 
@@ -343,6 +347,8 @@ ApplicationWindow {
         Item {
             width: parent.width
             implicitHeight: mainColumn.implicitHeight
+            anchors.bottomMargin: 15
+
 
             ColumnLayout {
                 id: mainColumn
@@ -416,8 +422,10 @@ ApplicationWindow {
                         Layout.leftMargin: 40
                         Layout.rightMargin: 40
                         Layout.preferredHeight: skillsColumn.implicitHeight + 40
-                        color: "#363636"
-                        radius: 12
+                        color: root.frameColor
+                        radius: 6
+                        border.width: 1
+                        border.color: root.borderColor
 
                         ColumnLayout {
                             id: skillsColumn
@@ -460,7 +468,7 @@ ApplicationWindow {
                                         Layout.fillWidth: true
                                         Layout.preferredHeight: 6
                                         radius: height / 2
-                                        color: "#1c1c1c"
+                                        color: root.borderColor
 
                                         Rectangle {
                                             width: parent.width * modelData.level
@@ -480,6 +488,9 @@ ApplicationWindow {
                             }
                         }
                     }
+                }
+                Item {
+                    Layout.preferredHeight: 0
                 }
             }
         }
@@ -529,8 +540,10 @@ ApplicationWindow {
                 Rectangle {
                     Layout.fillWidth: true
                     Layout.preferredHeight: introText.implicitHeight + 40
-                    color: "#363636"
-                    radius: 12
+                    color: root.imageBGColor
+                    radius: 6
+                    border.width: 1
+                    border.color: root.borderColor
 
                     Label {
                         id: introText
@@ -572,9 +585,11 @@ ApplicationWindow {
 
                         delegate: Rectangle {
                             width: aboutColumn.width > 600 ? (aboutColumn.width - 15) / 2 : aboutColumn.width
-                            height: aboutColumn.width > 600 ? 160 : cardColumn.implicitHeight + 40  // Fixed height when 2 per line
-                            color: "#363636"
-                            radius: 12
+                            height: aboutColumn.width > 600 ? 200 : cardColumn.implicitHeight + 40  // Fixed height when 2 per line
+                            color: root.frameColor
+                            radius: 6
+                            border.width: 1
+                            border.color: root.borderColor
 
                             Rectangle {
                                 width: 4
@@ -612,23 +627,6 @@ ApplicationWindow {
                                 }
                             }
                         }
-                    }
-                }
-
-                Rectangle {
-                    Layout.fillWidth: true
-                    Layout.preferredHeight: musicText.implicitHeight + 40
-                    color: "#363636"
-                    radius: 12
-
-                    Label {
-                        id: musicText
-                        anchors.fill: parent
-                        anchors.margins: 20
-                        text: "Always coding with music - it helps me stay focused and creative while working on projects."
-                        wrapMode: Text.WordWrap
-                        font.pixelSize: 16
-                        horizontalAlignment: Text.AlignHCenter
                     }
                 }
             }

@@ -9,11 +9,11 @@ int main(int argc, char *argv[])
 
 
     // ... at the start of main():
-    QFile fontFile(":/FiraCode-VF.woff2");
+    QFile fontFile(":/font/SpaceMono-Regular.ttf");
     if (!fontFile.exists()) {
         qDebug() << "Font file not found in resources";
     }
-    int fontId = QFontDatabase::addApplicationFont(":/FiraCode-VF.woff2");
+    int fontId = QFontDatabase::addApplicationFont(":/font/SpaceMono-Regular.ttf");
     if (fontId != -1) {
         // Get the font family name
         QString family = QFontDatabase::applicationFontFamilies(fontId).at(0);
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
         &app,
         []() { QCoreApplication::exit(-1); },
         Qt::QueuedConnection);
-    engine.load(QUrl("qrc:/Main.qml"));
+    engine.load(QUrl("qrc:/qml/Main.qml"));
 
     return app.exec();
 }
