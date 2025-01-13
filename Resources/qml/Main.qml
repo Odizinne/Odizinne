@@ -210,6 +210,30 @@ ApplicationWindow {
                 Layout.preferredHeight: themeSwitch.height - 10
                 Layout.rightMargin: -15
                 Layout.preferredWidth: height
+
+                // Add rotation animation
+                rotation: themeSwitch.checked ? 180 : 0
+                Behavior on rotation {
+                    NumberAnimation {
+                        duration: 300
+                        easing.type: Easing.OutQuad
+                    }
+                }
+
+                // Add opacity animation for smooth icon transition
+                opacity: 1
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 150
+                    }
+                }
+
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        themeSwitch.checked = !themeSwitch.checked
+                    }
+                }
             }
 
             Switch {
@@ -267,7 +291,7 @@ ApplicationWindow {
 
                 Label {
                     Layout.fillWidth: true
-                    text: "I'm a Qt Desktop applications Developer focused on creating clean and intuitive applications"
+                    text: "I'm a self learning Qt Desktop applications Developer focused on creating useful applications"
                     font.pixelSize: 20
                     wrapMode: Text.WordWrap
                     horizontalAlignment: Text.AlignHCenter
