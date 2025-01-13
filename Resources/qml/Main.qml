@@ -13,7 +13,7 @@ ApplicationWindow {
     property int spacing: 40
     property int targetColumns: Math.floor(width / (1920/5))
     property int animationDuration: 400
-    Material.theme: Material.Light
+    Material.theme: Material.System
     Material.accent: Material.Red
 
     property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ececec"
@@ -211,7 +211,6 @@ ApplicationWindow {
                 Layout.rightMargin: -15
                 Layout.preferredWidth: height
 
-                // Add rotation animation
                 rotation: themeSwitch.checked ? 180 : 0
                 Behavior on rotation {
                     NumberAnimation {
@@ -220,7 +219,6 @@ ApplicationWindow {
                     }
                 }
 
-                // Add opacity animation for smooth icon transition
                 opacity: 1
                 Behavior on opacity {
                     NumberAnimation {
