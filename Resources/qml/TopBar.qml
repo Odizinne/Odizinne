@@ -71,25 +71,28 @@ Rectangle {
             Layout.fillWidth: true
         }
 
-        Image {
-            id: themeImage
-            source: Material.theme === Material.Dark ? "qrc:/icons/moon.png" : "qrc:/icons/sun.png"
-            Layout.preferredHeight: themeSwitch.height - 10
-            Layout.rightMargin: -15
-            Layout.preferredWidth: height
 
-            rotation: themeSwitch.checked ? 180 : 0
+        Item {
+            Layout.preferredHeight: themeSwitch.height - 10
+            Layout.preferredWidth: height
+            Layout.rightMargin: -15
+
+        Image {
+            id: sunImage
+            anchors.fill: parent
+            source: "qrc:/icons/sun.png"
+            opacity: !themeSwitch.checked ? 1 : 0  // Changed to use switch state directly
+            rotation: themeSwitch.checked ? 360 : 0
             Behavior on rotation {
                 NumberAnimation {
-                    duration: 300
+                    duration: 500
                     easing.type: Easing.OutQuad
                 }
             }
 
-            opacity: 1
             Behavior on opacity {
                 NumberAnimation {
-                    duration: 150
+                    duration: 500
                 }
             }
 
@@ -101,6 +104,34 @@ Rectangle {
             }
         }
 
+
+        Image {
+            anchors.fill: parent
+            id: moonImage
+            source: "qrc:/icons/moon.png"
+            opacity: themeSwitch.checked ? 1 : 0
+            rotation: themeSwitch.checked ? 360 : 0
+            Behavior on rotation {
+                NumberAnimation {
+                    duration: 500
+                    easing.type: Easing.OutQuad
+                }
+            }
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 100
+                }
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    themeSwitch.checked = !themeSwitch.checked
+                }
+            }
+        }
+}
         Switch {
             id: themeSwitch
             Component.onCompleted: checked = (root.Material.theme === root.Material.Dark)
@@ -114,3 +145,4 @@ Rectangle {
         }
     }
 }
+
