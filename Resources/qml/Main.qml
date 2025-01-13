@@ -78,7 +78,7 @@ ApplicationWindow {
         ListElement {
             title: "HeadsetControl-Qt"
             url: "https://github.com/Odizinne/HeadsetControl-Qt"
-            lightImage: ""
+            lightImage: "qrc:/images/headsetcontrolqt_light.png"
             darkImage: "qrc:/images/headsetcontrolqt.png"
             description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd. It is running on both windows and linux"
         }
@@ -106,7 +106,7 @@ ApplicationWindow {
         ListElement {
             title: "AutoSceneSwitcher"
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
-            lightImage: ""
+            lightImage: "qrc:/images/autosceneswitcher_light.png"
             darkImage: "qrc:/images/autosceneswitcher.png"
             description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs."
         }
@@ -319,7 +319,6 @@ ApplicationWindow {
 
                         anchors.margins: root.spacing / 2
                         color: root.frameColor
-                        //color: root.bgRed
                         radius: 6
                         clip: true
                         border.width: 1
@@ -336,23 +335,18 @@ ApplicationWindow {
                             height: width * 9/16
 
                             color: root.bgAccent
-                            //color: "transparent"
                             topLeftRadius: 6
                             topRightRadius: 6
                             Image {
                                 source: root.Material.theme === Material.Dark ? model.darkImage : model.lightImage
                                 fillMode: Image.PreserveAspectCrop
-                                //anchors.centerIn: parent
                                 anchors.left: parent.left
                                 anchors.right: parent.right
                                 anchors.top: parent.top
                                 anchors.bottom: parent.bottom
                                 width: parent.width * 1
                                 height: parent.height * 1
-                                anchors.leftMargin: 15
-                                anchors.rightMargin: 15
-                                anchors.topMargin: 15
-                                anchors.bottomMargin: 15
+                                anchors.margins: 15
                                 sourceClipRect: Qt.rect(1, 1, sourceSize.width - 2, sourceSize.height - 2)
                                 layer.enabled: true
                                 layer.effect: OpacityMask {
@@ -361,12 +355,7 @@ ApplicationWindow {
                                         id: maskedRect
                                         width: projImage.width
                                         height: projImage.height
-                                        radius: 0  // Set default radius to 0
-                                        // Specify top corners only
-                                        topLeftRadius: 6
-                                        topRightRadius: 6
-                                        bottomLeftRadius: 6
-                                        bottomRightRadius: 6
+                                        radius: 6
                                     }
                                 }
 
