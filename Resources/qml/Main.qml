@@ -96,6 +96,26 @@ ApplicationWindow {
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
             description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs. Easy to setup."
         }
+        ListElement {
+            title: "Sunshine-Toolbox"
+            url: "https://github.com/Odizinne/sunshine-toolbox"
+            description: "An automation cli tool for sunshine moonlight local streaming. Allow to change host resolution to match client, toggle hdr, start and monitor BigPicture process..."
+        }
+        ListElement {
+            title: "OpenRGB-Installer"
+            url: "https://github.com/Odizinne/OpenRGB-Installer"
+            description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to installed specific version or just the latest stable or experimental one."
+        }
+        ListElement {
+            title: "makeSense"
+            url: "https://github.com/Odizinne/makeSense"
+            description: "makeSense ias a PyQt6 dualsense driver for windows. It was designed to monitor battery state, use touchpad as pointer, set rgb color, and emulate XBOX controller with ViGEmBus."
+        }
+        ListElement {
+            title: "Pokerogue-Standalone"
+            url: "https://github.com/Odizinne/Pokerogue-Standalone"
+            description: "An electron wrapper for Pokérogue made with couch gaming and steam deck in mind. Features some qol such as fullscreen by default, themed cursor and mouse cursor hiding on idle."
+        }
     }
 
     Rectangle {
