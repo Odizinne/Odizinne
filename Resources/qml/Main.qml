@@ -16,11 +16,16 @@ ApplicationWindow {
     Material.theme: Material.Light
     Material.accent: Material.Red
 
-
-    property string frameColor: Material.theme === Material.Dark ? "#262626" : "#f8f8f8"
+    property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ffffff"
     property string topbarColor: Material.theme === Material.Dark ? "#313131" : "#e8e8e8"
     property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
     property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
+
+    property string bgAccent: Material.theme === Material.Dark ?
+        Qt.rgba(Material.color(Material.Red, Material.Shade200).r,
+                Material.color(Material.Red, Material.Shade200).g,
+                Material.color(Material.Red, Material.Shade200).b,
+                0.3) : Material.color(Material.Red, Material.ShadeA100)
 
     property string bgGreen: Material.theme === Material.Dark ?
         Qt.rgba(Material.color(Material.LightGreen, Material.Shade200).r,
@@ -59,43 +64,50 @@ ApplicationWindow {
         ListElement {
             title: "Retr0Mine"
             url: "https://github.com/Odizinne/Retr0Mine"
-            image: "qrc:/images/retr0mine.png"
+            lightImage: "qrc:/images/retr0mine_light.png"
+            darkImage: "qrc:/images/retr0mine.png"
             description: "Retr0Mine is an attempt to create a modern looking minesweeper. It was designed with many QoL features to enhance gameplay."
         }
         ListElement {
             title: "QuickSoundSwitcher"
             url: "https://github.com/Odizinne/QuickSoundSwitcher"
-            image: "qrc:/images/quicksoundswitcher.png"
+            lightImage: "qrc:/images/quicksoundswitcher_light.png"
+            darkImage: "qrc:/images/quicksoundswitcher.png"
             description: "A custom all in one audio panel for windows, aiming to look as native as possible."
         }
         ListElement {
             title: "HeadsetControl-Qt"
             url: "https://github.com/Odizinne/HeadsetControl-Qt"
-            image: "qrc:/images/headsetcontrolqt.png"
+            lightImage: ""
+            darkImage: "qrc:/images/headsetcontrolqt.png"
             description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd. It is running on both windows and linux"
         }
         ListElement {
             title: "Boxy"
             url: "https://github.com/Odizinne/Boxy"
-            image: "qrc:/images/boxy.png"
+            lightImage: "qrc:/images/boxy_light.png"
+            darkImage: "qrc:/images/boxy.png"
             description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
         }
         ListElement {
             title: "BigPictureTV"
             url: "https://github.com/Odizinne/BigPictureTV"
-            image: "qrc:/images/bigpicturetv.png"
+            lightImage: "qrc:/images/bigpicturetv_light.png"
+            darkImage: "qrc:/images/bigpicturetv.png"
             description: "A PC to console automation software relying on Steam big picture mode."
         }
         ListElement {
             title: "EnhancedDisplaySwitch"
             url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
-            image: "qrc:/images/enhanceddisplayswitch.png"
+            lightImage: "qrc:/images/enhanceddisplayswitch_light.png"
+            darkImage: "qrc:/images/enhanceddisplayswitch.png"
             description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
         }
         ListElement {
             title: "AutoSceneSwitcher"
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
-            image: "qrc:/images/autosceneswitcher.png"
+            lightImage: ""
+            darkImage: "qrc:/images/autosceneswitcher.png"
             description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs."
         }
     }
@@ -293,7 +305,7 @@ ApplicationWindow {
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 cellWidth: width / targetColumns
-                cellHeight: cellWidth * 1.45
+                cellHeight: cellWidth * 1.05
 
                 model: projectsModel
                 clip: true
@@ -319,18 +331,45 @@ ApplicationWindow {
                                 top: parent.top
                                 left: parent.left
                                 right: parent.right
-                                margins: 1
+                                margins: 0
                             }
-                            height: width
+                            height: width * 9/16
 
-                            //color: root.bgRed
-                            color: "transparent"
+                            color: root.bgAccent
+                            //color: "transparent"
                             topLeftRadius: 6
                             topRightRadius: 6
                             Image {
-                                source: model.image
+                                source: root.Material.theme === Material.Dark ? model.darkImage : model.lightImage
                                 fillMode: Image.PreserveAspectCrop
-                                anchors.fill: parent
+                                //anchors.centerIn: parent
+                                anchors.left: parent.left
+                                anchors.right: parent.right
+                                anchors.top: parent.top
+                                anchors.bottom: parent.bottom
+                                width: parent.width * 1
+                                height: parent.height * 1
+                                anchors.leftMargin: 15
+                                anchors.rightMargin: 15
+                                anchors.topMargin: 15
+                                anchors.bottomMargin: 15
+                                sourceClipRect: Qt.rect(1, 1, sourceSize.width - 2, sourceSize.height - 2)
+                                layer.enabled: true
+                                layer.effect: OpacityMask {
+                                    id: opacityMaskInstance
+                                    maskSource: Rectangle {
+                                        id: maskedRect
+                                        width: projImage.width
+                                        height: projImage.height
+                                        radius: 0  // Set default radius to 0
+                                        // Specify top corners only
+                                        topLeftRadius: 6
+                                        topRightRadius: 6
+                                        bottomLeftRadius: 6
+                                        bottomRightRadius: 6
+                                    }
+                                }
+
                             }
                         }
 
@@ -340,7 +379,10 @@ ApplicationWindow {
                                 top: projImage.bottom
                                 left: parent.left
                                 right: parent.right
-                                margins: 15
+                                topMargin: 10
+                                leftMargin: 15
+                                rightMargin: 15
+                                bottomMargin: 0
                             }
                             text: model.title
                             color: root.Material.accent
