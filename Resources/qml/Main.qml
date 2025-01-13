@@ -315,6 +315,7 @@ ApplicationWindow {
                     height: grid.cellHeight
 
                     Rectangle {
+                        id: cardRect
                         anchors.fill: parent
 
                         anchors.margins: root.spacing / 2
@@ -323,6 +324,32 @@ ApplicationWindow {
                         clip: true
                         border.width: 1
                         border.color: root.borderColor
+
+                        transform: Scale {
+                            id: cardScale
+                            origin.x: cardRect.width / 2
+                            origin.y: cardRect.height / 2
+                        }
+
+                        // Add scale animation
+                        Behavior on scale {
+                            NumberAnimation {
+                                duration: 200
+                                easing.type: Easing.OutQuad
+                            }
+                        }
+
+                        MouseArea {
+                            anchors.fill: parent
+                            cursorShape: Qt.PointingHandCursor
+                            hoverEnabled: true  // Enable hover detection
+
+                            onEntered: cardRect.scale = 1.05  // Scale up on hover
+                            onExited: cardRect.scale = 1.0    // Return to normal size
+                            onClicked: {
+                                Qt.openUrlExternally(model.url)
+                            }
+                        }
 
                         Rectangle {
                             id: projImage
@@ -393,14 +420,6 @@ ApplicationWindow {
                             wrapMode: Text.WordWrap
                             font.pixelSize: 14
                             verticalAlignment: Text.AlignVCenter
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            cursorShape: Qt.PointingHandCursor
-                            onClicked: {
-                                Qt.openUrlExternally(model.url)
-                            }
                         }
                     }
                 }
