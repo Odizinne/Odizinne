@@ -63,55 +63,77 @@ ApplicationWindow {
         id: projectsModel
         ListElement {
             title: "Retr0Mine"
+            darkImage: "qrc:/images/retr0mine.png"
+            lightImage: "qrc:/images/retr0mine.png"
             url: "https://github.com/Odizinne/Retr0Mine"
             description: "Retr0Mine is an attempt to create a modern looking minesweeper for a friend. It was designed with many QoL features to enhance gameplay. Runs on windows and linux."
         }
         ListElement {
             title: "QuickSoundSwitcher"
+            darkImage: "qrc:/images/quicksoundswitcher.png"
+            lightImage: "qrc:/images/quicksoundswitcher.png"
             url: "https://github.com/Odizinne/QuickSoundSwitcher"
             description: "A custom all in one audio panel for windows featuring input and output device switch as well as a volume mixer. Made with close to native Ui for Windows 10 and 11."
         }
         ListElement {
             title: "HeadsetControl-Qt"
+            darkImage: "qrc:/images/headsetcontrolqt.png"
+            lightImage: "qrc:/images/headsetcontrolqt.png"
             url: "https://github.com/Odizinne/HeadsetControl-Qt"
             description: "HeadsetControl-Qt is a frontend for headsetcontrol by Sapd using Qt-Widgets. It is running on both windows and linux. It was one of my first projects."
         }
         ListElement {
             title: "Boxy"
+            darkImage: "qrc:/images/boxy.png"
+            lightImage: "qrc:/images/boxy.png"
             url: "https://github.com/Odizinne/Boxy"
             description: "A python discord music bot built on top of yt-dlp. Can be used with a user friendly GUI, or in nogui mode and controlled by discord commands."
         }
         ListElement {
             title: "BigPictureTV"
+            darkImage: "qrc:/images/bigpicturetv_light.png"
+            lightImage: "qrc:/images/bigpicturetv_dark.png"
             url: "https://github.com/Odizinne/BigPictureTV"
             description: "A PC to console automation software relying on Steam big picture mode. Couch gaming ready with just one controller button press."
         }
         ListElement {
+            darkImage: "qrc:/images/powershell_light.png"
+            lightImage: "qrc:/images/powershell_dark.png"
             title: "EnhancedDisplaySwitch"
             url: "https://github.com/Odizinne/EnhancedDisplaySwitch"
             description: "A frontend to original windows displayswitch.exe command, providing access to last used command. It was made for scripting purposes."
         }
         ListElement {
+            darkImage: "qrc:/images/autosceneswitcher.png"
+            lightImage: "qrc:/images/autosceneswitcher.png"
             title: "AutoSceneSwitcher"
             url: "https://github.com/Odizinne/AutoSceneSwitcher"
             description: "Automatically switch streamlabs-obs scene based on process detection. Originally made specifically for a friend needs. Easy to setup."
         }
         ListElement {
+            darkImage: "qrc:/images/powershell_light.png"
+            lightImage: "qrc:/images/powershell_dark.png"
             title: "Sunshine-Toolbox"
             url: "https://github.com/Odizinne/sunshine-toolbox"
             description: "An automation cli tool for sunshine moonlight local streaming. Allow to change host resolution to match client, toggle hdr, start and monitor BigPicture process..."
         }
         ListElement {
+            darkImage: "qrc:/images/openrgbinstaller.png"
+            lightImage: "qrc:/images/openrgbinstaller.png"
             title: "OpenRGB-Installer"
             url: "https://github.com/Odizinne/OpenRGB-Installer"
             description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to installed specific version or just the latest stable or experimental one."
         }
         ListElement {
+            darkImage: "qrc:/images/makesense_light.png"
+            lightImage: "qrc:/images/makesense_dark.png"
             title: "makeSense"
             url: "https://github.com/Odizinne/makeSense"
             description: "makeSense ias a PyQt6 dualsense driver for windows. It was designed to monitor battery state, use touchpad as pointer, set rgb color, and emulate XBOX controller with ViGEmBus."
         }
         ListElement {
+            darkImage: "qrc:/images/pokeroguestandalone.png"
+            lightImage: "qrc:/images/pokeroguestandalone.png"
             title: "Pokerogue-Standalone"
             url: "https://github.com/Odizinne/Pokerogue-Standalone"
             description: "An electron wrapper for Pokérogue made with couch gaming and steam deck in mind. Features some qol such as fullscreen by default, themed cursor and mouse cursor hiding on idle."
@@ -236,14 +258,12 @@ ApplicationWindow {
 
             Switch {
                 id: themeSwitch
-                checked: root.Material.theme === root.Material.Dark
+                Component.onCompleted: checked = (root.Material.theme === root.Material.Dark)
                 onCheckedChanged: {
                     if (checked) {
                         root.Material.theme = root.Material.Dark
-                        themeSwitch.checked = true
                     } else {
                         root.Material.theme = root.Material.Light
-                        themeSwitch.checked = false
                     }
                 }
             }
@@ -355,7 +375,7 @@ ApplicationWindow {
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
                 cellWidth: width / targetColumns
-                cellHeight: cellWidth * 0.7
+                cellHeight: cellWidth * 0.85
 
                 model: projectsModel
                 clip: true
@@ -401,17 +421,37 @@ ApplicationWindow {
                             }
                         }
 
+
+                            Image {
+                                id: projImage
+                                source: root.Material.theme === Material.Dark ? model.darkImage : model.lightImage
+                                fillMode: Image.PreserveAspectFit
+                                anchors.left: parent.left
+                                anchors.right: parent.right
+                                anchors.top: parent.top
+                                //anchors.bottom: parent.bottom
+                                sourceSize.height:  height
+                                sourceSize.width: width
+                                width: parent.width
+                                height: parent.height / 4
+                                anchors.margins: 15
+                                //sourceClipRect: Qt.rect(1, 1, sourceSize.width - 2, sourceSize.height - 2)
+
+                            }
+
+
                         Text {
                             id: projName
                             anchors {
-                                top: parent.top
+                                top: projImage.bottom
                                 left: parent.left
                                 right: parent.right
-                                topMargin: 25
                                 leftMargin: 15
                                 rightMargin: 15
-                                bottomMargin: 0
+                                bottomMargin: 15
+                                topMargin: 15
                             }
+
                             text: model.title
                             color: root.Material.accent
                             font.bold: true

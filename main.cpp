@@ -5,17 +5,16 @@
 
 int main(int argc, char *argv[])
 {
+    //qputenv("QT_QUICK_CONTROLS_MATERIAL_VARIANT", "Dense");
     QGuiApplication app(argc, argv);
 
 
-    // ... at the start of main():
     QFile fontFile(":/font/SpaceMono-Regular.ttf");
     if (!fontFile.exists()) {
         qDebug() << "Font file not found in resources";
     }
     int fontId = QFontDatabase::addApplicationFont(":/font/SpaceMono-Regular.ttf");
     if (fontId != -1) {
-        // Get the font family name
         QString family = QFontDatabase::applicationFontFamilies(fontId).at(0);
         QFont font(family);
         app.setFont(font);
