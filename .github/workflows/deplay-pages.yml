@@ -20,13 +20,44 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Setup Emscripten
+        uses: mymindstorm/setup-emsdk@v12
+        with:
+          version: 3.1.56
+          actions-cache-folder: 'emsdk-cache'
+
+      - name: Install Qt
+        run: |
+          python -m venv venv
+          source venv/bin/activate
+          pip install git+https://github.com/miurahr/aqtinstall.git
+          python -m aqt install-qt linux desktop 6.8.1 linux_gcc_64
+          python -m aqt install-qt all_os wasm 6.8.1 wasm_singlethread --outputdir $(pwd)
+
+      - name: Build WebAssembly
+        run: |
+          source venv/bin/activate
+          mkdir build
+          cd build
+          source ${EMSDK}/emsdk_env.sh
+          ../6.8.1/wasm_singlethread/bin/qmake6 ../Odizinne.pro
+          make
+
+      - name: Copy web files
+        run: |
+          cp index.html build/
+          cp favicon.ico build/
+
+      - name: List build artifacts
+        run: ls -la build/
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: './binaries'
+          path: './build'
 
       - name: Deploy to GitHub Pages
         id: deployment
