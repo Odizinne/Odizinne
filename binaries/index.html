@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, height=device-height, user-scalable=0"/>
+    <!-- Changed viewport to force desktop view -->
+    <meta name="viewport" content="width=1024, user-scalable=yes">
     <title>Odizinne</title>
     <style>
       :root {
@@ -27,8 +28,10 @@
         padding: 0;
         width: 100%;
         height: 100%;
+        min-width: 1024px; /* Added to ensure minimum width */
       }
 
+      /* Rest of the CSS remains the same */
       #screen {
         width: 100%;
         height: 100%;
