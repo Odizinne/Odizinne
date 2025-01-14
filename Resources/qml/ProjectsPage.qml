@@ -93,14 +93,28 @@ ScrollView {
                     anchors.margins: root.spacing / 2
                     color: root.frameColor
                     radius: 6
+                    scale: 1
                     clip: true
                     border.width: 1
                     border.color: root.borderColor
+
+                    Behavior on scale {
+                        NumberAnimation {
+                            duration: 200
+                            easing.type: Easing.OutQuad
+                        }
+                    }
 
                     MouseArea {
                         anchors.fill: parent
                         cursorShape: Qt.PointingHandCursor
                         hoverEnabled: true
+                        onEntered: {
+                            cardRect.scale = 1.05
+                        }
+                        onExited: {
+                            cardRect.scale = 1.0
+                        }
                         onClicked: Qt.openUrlExternally(model.url)
                     }
 

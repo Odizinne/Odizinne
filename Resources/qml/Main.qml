@@ -150,9 +150,9 @@ ApplicationWindow {
             color: "#73d216",
             bgColor: root.bgGreen,
             skills: [
-                {name: "Qt/QML", level: 0.9},
+                {name: "Qt/QML", level: 0.8},
                 {name: "Qt Widgets", level: 0.7},
-                {name: "C++", level: 0.8}
+                {name: "C++", level: 0.7}
             ]
         },
         {
@@ -172,8 +172,8 @@ ApplicationWindow {
             color: "#ad7fa8",
             bgColor: bgPurple,
             skills: [
-                {name: "Python", level: 0.7},
-                {name: "PyQt/PySide", level: 0.65}
+                {name: "Python", level: 0.6},
+                {name: "PyQt/PySide", level: 0.7}
             ]
         },
         {
@@ -181,10 +181,10 @@ ApplicationWindow {
             color: "#ef2929",
             bgColor: bgRed,
             skills: [
-                {name: "Git", level: 0.85},
+                {name: "Git", level: 0.8},
                 {name: "Qt Creator", level: 0.8},
-                {name: "VSCode", level: 0.8},
-                {name: "GitHub Workflow", level: 0.75}
+                {name: "VSCode", level: 0.7},
+                {name: "GitHub Workflow", level: 0.65}
             ]
         },
         {
@@ -192,7 +192,7 @@ ApplicationWindow {
             color: "#babdb6",
             bgColor: bgGrey,
             skills: [
-                {name: "Electron", level: 0.5}
+                {name: "Electron", level: 0.3}
             ]
         }
     ]
