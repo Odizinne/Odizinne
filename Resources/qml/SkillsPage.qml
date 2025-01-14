@@ -5,9 +5,10 @@ import QtQuick.Layouts
 ScrollView {
     id: skillsView
     clip: true
-
-    ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
     contentWidth: availableWidth
+    ScrollBar.vertical.policy: {
+        if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+    }
 
     Item {
         width: parent.width
@@ -22,9 +23,10 @@ ScrollView {
             Label {
                 Layout.fillWidth: true
                 text: "Skills & Technologies"
-                font.pixelSize: 30
+                font.pixelSize: 30 * root.fontScale
                 font.bold: true
                 Layout.topMargin: 30
+                wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
             }
 
@@ -55,7 +57,7 @@ ScrollView {
                             Layout.fillWidth: true
                             text: categoryData.category
                             font.bold: true
-                            font.pixelSize: 22
+                            font.pixelSize: 22 * root.fontScale
                         }
 
                         Repeater {
@@ -68,12 +70,12 @@ ScrollView {
                                     Layout.fillWidth: true
                                     Label {
                                         text: modelData.name
-                                        font.pixelSize: 16
+                                        font.pixelSize: 16 * root.fontScale
                                     }
                                     Label {
                                         text: Math.round(modelData.level * 100) + "%"
                                         opacity: 0.7
-                                        font.pixelSize: 14
+                                        font.pixelSize: 14 * root.fontScale
                                     }
                                 }
 

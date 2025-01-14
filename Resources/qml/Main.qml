@@ -5,26 +5,27 @@ import "."
 
 ApplicationWindow {
     id: root
-    width: 1600
-    height: 900
+    width: 360
+    height: 641
     visible: true
     title: qsTr("Flora's Portfolio")
 
-    // Properties
+    property bool isMobile: width <= 850
+    property real fontScale: isMobile ? 0.75 : 1
+    property real cardHeightScale: isMobile ? 1 : 0.85
     property int selectedTab: 0
     property int spacing: 40
-    property int targetColumns: Math.floor(width / (1900/5))
+    property int targetColumns: Math.max(1, Math.min(5, Math.floor(width / 380)))
+
     property int animationDuration: 400
     Material.theme: Material.System
     Material.accent: Material.Red
 
-    // Colors
     property string frameColor: Material.theme === Material.Dark ? "#262626" : "#ececec"
     property string topbarColor: Material.theme === Material.Dark ? "#313131" : "#e8e8e8"
     property string borderColor: Material.theme === Material.Dark ? Qt.rgba(1, 1, 1, 0.10) : Qt.rgba(0, 0, 0, 0.10)
     property string bgColor: Material.theme === Material.Dark ? "#121212" : "#f5f5f5"
 
-    // Background colors
     property string bgAccent: Material.theme === Material.Dark ?
                                   Qt.rgba(Material.color(Material.Red, Material.Shade200).r,
                                           Material.color(Material.Red, Material.Shade200).g,
@@ -231,7 +232,6 @@ ApplicationWindow {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             currentIndex: root.selectedTab
-
             Loader {
                 id: welcomeLoader
                 active: root.selectedTab === 0 || opacity > 0

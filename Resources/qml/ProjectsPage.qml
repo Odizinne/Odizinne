@@ -6,8 +6,9 @@ import QtQml.Models 2.15
 ScrollView {
     id: projectsView
     clip: true
-
-    ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
+    ScrollBar.vertical.policy: {
+        if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+    }
 
     Item {
         width: projectsView.width
@@ -16,13 +17,14 @@ ScrollView {
         Label {
             id: overviewLabel
             text: "Projects overview"
-            font.pixelSize: 30
+            font.pixelSize: 30 * root.fontScale
             font.bold: true
             anchors.horizontalCenter: parent.horizontalCenter
 
             anchors.top: parent.top
             anchors.topMargin: 30
             height: 50
+            wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
         }
 
@@ -33,6 +35,7 @@ ScrollView {
                 horizontalCenter: parent.horizontalCenter
                 margins: 30
             }
+            visible: !root.isMobile
             width: overviewLabel.width * 2
             placeholderText: "Filter projects..."
             font.pixelSize: 16
@@ -42,7 +45,7 @@ ScrollView {
             id: grid
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: searchField.bottom
+            anchors.top: root.isMobile ? overviewLabel.bottom : searchField.bottom
             anchors.topMargin: 10
 
             height: Math.ceil(visibleModel.count / Math.floor(width / cellWidth)) * cellHeight
@@ -55,7 +58,7 @@ ScrollView {
 
             property real cellSize: Math.floor(width / root.targetColumns)
             cellWidth: cellSize
-            cellHeight: cellSize * 0.85
+            cellHeight: cellSize * root.cardHeightScale
 
             model: ListModel {
                 id: visibleModel
@@ -107,14 +110,11 @@ ScrollView {
 
                     MouseArea {
                         anchors.fill: parent
-                        cursorShape: Qt.PointingHandCursor
-                        hoverEnabled: true
-                        onEntered: {
-                            cardRect.scale = 1.05
-                        }
-                        onExited: {
-                            cardRect.scale = 1.0
-                        }
+                        property bool isMultiColumn: Math.floor(grid.width / grid.cellWidth) > 1
+                        cursorShape: isMultiColumn ? Qt.PointingHandCursor : Qt.ArrowCursor
+                        hoverEnabled: isMultiColumn
+                        onEntered: if (isMultiColumn) cardRect.scale = 1.05
+                        onExited: if (isMultiColumn) cardRect.scale = 1.0
                         onClicked: Qt.openUrlExternally(model.url)
                     }
 

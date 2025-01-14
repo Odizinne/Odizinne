@@ -18,15 +18,16 @@ ScrollView {
             Label {
                 Layout.fillWidth: true
                 text: "Welcome to my Portfolio"
-                font.pixelSize: 40
+                font.pixelSize: 40 * root.fontScale
                 font.bold: true
+                wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
             }
 
             Label {
                 Layout.fillWidth: true
                 text: "I'm a self learning Qt Desktop applications Developer focused on creating useful applications"
-                font.pixelSize: 20
+                font.pixelSize: 20 * root.fontScale
                 wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
             }

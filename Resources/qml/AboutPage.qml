@@ -5,9 +5,10 @@ import QtQuick.Layouts
 ScrollView {
     id: aboutView
     clip: true
-    
-    ScrollBar.vertical.policy: contentHeight > height ? ScrollBar.AlwaysOn : ScrollBar.AsNeeded
     contentWidth: availableWidth
+    ScrollBar.vertical.policy: {
+        if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+    }
 
     Item {
         width: parent.width
@@ -23,8 +24,9 @@ ScrollView {
                 Layout.fillWidth: true
                 text: "Hello, I'm Flora"
                 Layout.bottomMargin: 10
-                font.pixelSize: 30
+                font.pixelSize: 30 * root.fontScale
                 font.bold: true
+                wrapMode: Text.WordWrap
                 horizontalAlignment: Text.AlignHCenter
             }
 
@@ -42,7 +44,7 @@ ScrollView {
                     anchors.margins: 20
                     text: "I'm a self-taught programmer with a passion for clean, logical solutions. Originally from France, I enjoy exploring technology and creating intuitive user interfaces."
                     wrapMode: Text.WordWrap
-                    font.pixelSize: 16
+                    font.pixelSize: 16 * root.fontScale
                 }
             }
 
@@ -110,7 +112,7 @@ ScrollView {
                             Label {
                                 text: modelData.title
                                 font.bold: true
-                                font.pixelSize: 18
+                                font.pixelSize: 18 * root.fontScale
                             }
 
                             Label {
@@ -118,7 +120,7 @@ ScrollView {
                                 Layout.fillHeight: true
                                 text: modelData.content
                                 wrapMode: Text.WordWrap
-                                font.pixelSize: 14
+                                font.pixelSize: 14 * root.fontScale
                             }
                         }
                     }
