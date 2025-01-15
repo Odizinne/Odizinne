@@ -8,6 +8,7 @@ ScrollView {
     contentWidth: availableWidth
     ScrollBar.vertical.policy: {
         if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+        else return ScrollBar.AsNeeded
     }
 
     Item {

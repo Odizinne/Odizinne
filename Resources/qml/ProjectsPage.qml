@@ -8,6 +8,7 @@ ScrollView {
     clip: true
     ScrollBar.vertical.policy: {
         if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+        else return ScrollBar.AsNeeded
     }
 
     Item {
@@ -23,7 +24,7 @@ ScrollView {
 
             anchors.top: parent.top
             anchors.topMargin: 30
-            height: 50
+            height: implicitHeight
             wrapMode: Text.WordWrap
             horizontalAlignment: Text.AlignHCenter
         }

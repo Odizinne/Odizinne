@@ -15,7 +15,7 @@ ApplicationWindow {
     property real cardHeightScale: isMobile ? 1 : 0.85
     property int selectedTab: 0
     property int spacing: 40
-    property int targetColumns: Math.max(1, Math.min(5, Math.floor(width / 380)))
+    property int targetColumns: Math.max(1, Math.min(6, Math.floor(width / 350)))
 
     property int animationDuration: 400
     Material.theme: Material.System

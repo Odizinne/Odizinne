@@ -5,7 +5,10 @@ import QtQuick.Layouts
 ScrollView {
     id: welcomeView
     clip: true
-    
+    ScrollBar.vertical.policy: {
+        if (!root.isMobile && contentHeight > height) return ScrollBar.AlwaysOn
+        else return ScrollBar.AsNeeded
+    }
     Item {
         width: parent.width
         height: parent.height
