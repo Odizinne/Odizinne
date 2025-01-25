@@ -70,7 +70,7 @@ ApplicationWindow {
             title: "Retr0Mine"
             darkImage: "qrc:/images/retr0mine.png"
             lightImage: "qrc:/images/retr0mine.png"
-            url: "https://github.com/Odizinne/Retr0Mine"
+            url: "https://store.steampowered.com/app/3478030/Retr0Mine/"
             description: "Retr0Mine is an attempt to create a modern looking minesweeper for a friend. It was designed with many QoL features to enhance gameplay. Runs on windows and linux."
         }
         ListElement {
