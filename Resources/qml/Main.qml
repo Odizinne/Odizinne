@@ -133,7 +133,7 @@ ApplicationWindow {
             darkImage: "qrc:/images/makesense_light.png"
             lightImage: "qrc:/images/makesense_dark.png"
             title: "makeSense"
-            url: "https://github.com/Odizinne/makeSense"
+            url: "https://github.com/OdznArchives/makeSense"
             description: "makeSense ias a PyQt6 dualsense driver for windows. It was designed to monitor battery state, use touchpad as pointer, set rgb color, and emulate XBOX controller with ViGEmBus."
         }
         ListElement {
