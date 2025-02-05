@@ -47,6 +47,19 @@ Item {
                 onClicked: drawer.open()
             }
 
+            Label {
+                visible: root.isMobile
+                text: {
+                    if (root.selectedTab === 0) return "Welcome"
+                    if (root.selectedTab === 1) return "Projects"
+                    if (root.selectedTab === 2) return "Skills"
+                    if (root.selectedTab === 3) return "About me"
+                }
+                font.bold: true
+                font.pixelSize: 18
+                Layout.alignment: Qt.AlignCenter
+            }
+
             RowLayout {
                 id: desktopMenu
                 visible: !root.isMobile
