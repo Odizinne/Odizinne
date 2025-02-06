@@ -127,7 +127,7 @@ ApplicationWindow {
             lightImage: "qrc:/images/openrgbinstaller.png"
             title: "OpenRGB-Installer"
             url: "https://github.com/Odizinne/OpenRGB-Installer"
-            description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to installed specific version or just the latest stable or experimental one."
+            description: "A GUI installer and updater for OpenRGB designed for windows. It is possible to install a specific version or the latest stable or experimental one."
         }
         ListElement {
             darkImage: "qrc:/images/makesense_light.png"
