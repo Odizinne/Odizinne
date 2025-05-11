@@ -1,9 +1,11 @@
 ## Odizinne
 
-https://odizinne.net/
+[https://odizinne.github.io/Odizinne/](https://odizinne.github.io/Odizinne/)
 
 Self-learning.  
 
-I like the Qt framework and try to give shape to my ideas with it.
+- QML
+- CPP
+- Python
 
 - My archived projects are stored [here](https://github.com/orgs/OdznArchives/repositories)
